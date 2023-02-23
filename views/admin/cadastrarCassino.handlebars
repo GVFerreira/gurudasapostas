@@ -1,0 +1,240 @@
+<style>
+    input[type="submit"] {
+        background-color: #3E7A96;
+        color: #FFF;
+    }
+
+    input[type="submit"]:hover{
+        background-color: #F5A011;
+        color: #000;
+    }
+
+    h1 {
+        padding: 0;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header">
+            <h1>Cadastro de cassino</h1>
+        </div>
+        <div class="card-body">
+            <form action="/admin/cadastrandoCassino" method="POST" enctype="multipart/form-data">
+                <label for="nomeCassino" class="mb-1">Nome do cassino</label>
+                <input type="text" name="nomeCassino" id="nomeCassino" class="form-control mb-4" required autofocus>
+
+                <label for="imgCassino" class="mb-1">Logotipo do cassino</label>
+                <input type="file" accept="image/*" name="imgCassino" id="imgCassino" class="form-control mb-4" required>
+
+                <label for="classCassino">Classificação do cassino:</label>
+                <input type="range" id="classCassino" name="classCassino" min="0" max="5">
+                <p id="resultado" class="form-text text-muted mb-4 d-inline"></p><br>
+
+                <label class="mb-1 mt-3">Tipo de cassino</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="tipoCassino1" name="tipoCassino1">
+                <label class="form-check-label" for="tipoCassino1">Apostas Esportivas</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="tipoCassino2" name="tipoCassino2">
+                <label class="form-check-label" for="tipoCassino2">Cassino On-Line</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="tipoCassino3" name="tipoCassino3">
+                <label class="form-check-label mb-4" for="tipoCassino3">Trading Esportivo</label><br>
+
+
+                <label for="adjCassino1" class="mb-1">Adjetivos do cassino</label>
+                <input type="text" name="adjCassino1" id="adjCassino1" class="form-control mb-4" required>
+
+                <input type="text" name="adjCassino2" id="adjCassino2" class="form-control mb-4" required>
+
+                <input type="text" name="adjCassino3" id="adjCassino3" class="form-control mb-4" required>
+
+
+                <label class="mb-1">Formas de pagamento</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="formaPagamento1" name="formaPagamento1">
+                <label class="form-check-label" for="formaPagamento1">PIX</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="formaPagamento2" name="formaPagamento2">
+                <label class="form-check-label" for="formaPagamento2">Boleto</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="formaPagamento3" name="formaPagamento3">
+                <label class="form-check-label" for="formaPagamento3">Cartão de crédito</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="formaPagamento4" name="formaPagamento4">
+                <label class="form-check-label" for="formaPagamento4">Transferência bancária</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="formaPagamento5" name="formaPagamento5">
+                <label class="form-check-label" for="formaPagamento5">PicPay</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="formaPagamento6" name="formaPagamento6">
+                <label class="form-check-label" for="formaPagamento6">Pay4Fun</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="formaPagamento7" name="formaPagamento7">
+                <label class="form-check-label mb-4" for="formaPagamento7">Crypto</label><br>
+
+
+                <label for="valorBonus" class="mb-1">Valor do bônus</label>
+                <input type="number" name="valorBonus" id="valorBonus" class="form-control mb-4" placeholder="Insira somente números" required>
+
+
+                <label for="linkCassino" class="mb-1 ">Link de afilhiado:</label>
+                <input type="url" name="linkCassino" id="linkCassino" class="form-control mb-4" placeholder="Insira o endereço completo, incluindo o http://" required>
+
+                <label for="licencasCassino" class="mb-1 ">Licenças:</label>
+                <input type="text" name="licencasCassino" id="licencasCassino" class="form-control mb-4" required>
+
+                <label class="mb-1">Suporte ao cliente</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="suporte1" name="suporte1">
+                <label class="form-check-label" for="suporte1">E-mail</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="suporte2" name="suporte2">
+                <label class="form-check-label" for="suporte2">Telefone</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="suporte3" name="suporte3">
+                <label class="form-check-label mb-4" for="suporte3">Chat</label><br>
+
+                <label class="mb-1">Aplicativo</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="app1" name="app1">
+                <label class="form-check-label" for="app1">Android</label><br>
+                <input type="checkbox" class="form-check-input mb-2" id="app2" name="app2">
+                <label class="form-check-label mb-4" for="app2">iOS</label><br>
+
+                <label for="depositoMinimo" class="mb-1 ">Deposito mínimo:</label>
+                <input type="text" name="depositoMinimo" id="depositoMinimo" class="form-control mb-4" required>
+
+                <label for="saqueMinimo" class="mb-1 ">Saque mínimo:</label>
+                <input type="text" name="saqueMinimo" id="saqueMinimo" class="form-control mb-4" required>
+
+
+                <label class="mb-1">Possui bônus grátis?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="bonusGratis" id="bonusGratis" value="0">
+                    <label class="form-check-label">Não</label>
+                </div>
+                <div class="form-check">  
+                    <input class="form-check-input" type="radio" name="bonusGratis" id="bonusGratis" value="1">
+                    <label class="form-check-label">Sim</label>
+                </div>
+
+
+                <label class="mb-1 mt-4">Incluir na lista de melhores cassinos?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="incMelhores" id="incMelhores" value="0">
+                    <label class="form-check-label">Não</label>
+                </div>
+                <div class="form-check">  
+                    <input class="form-check-input" type="radio" name="incMelhores" id="incMelhores" value="1">
+                    <label class="form-check-label">Sim</label>
+                </div>
+
+
+                <label class="mb-1 mt-4">Incluir na lista de cassinos novos?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="incNovos" id="incNovos" value="0">
+                    <label class="form-check-label">Não</label>
+                </div>
+                <div class="form-check">  
+                    <input class="form-check-input" type="radio" name="incNovos" id="incNovos" value="1">
+                    <label class="form-check-label">Sim</label>
+                </div>
+
+
+                <label class="mb-1 mt-4">Incluir na lista de cassinos brasileiros?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="incBrasil" id="incBrasil" value="0">
+                    <label class="form-check-label">Não</label>
+                </div>
+                <div class="form-check">  
+                    <input class="form-check-input" type="radio" name="incBrasil" id="incBrasil" value="1">
+                    <label class="form-check-label">Sim</label>
+                </div>
+
+                <hr>
+
+                <label for="analiseCassino" class="mb-2">Análise do cassino</label>
+                <textarea name="analiseCassino" id="analiseCassino"></textarea>
+
+                <label for="topicoAnalise" class="mb-2 mt-4">Tópicos da análise</label>
+                <textarea name="topicoAnalise" id="topicoAnalise"></textarea>
+
+                <input type="submit" value="Cadastrar" class="btn mt-5">
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function range(){
+    let resultado = document.getElementById("resultado");
+    let valor = document.getElementById("classCassino").value;
+    resultado.innerHTML = valor
+    }
+
+    range()
+
+    document.addEventListener("change", range);
+ 
+</script>
+
+<script src="https://cdn.tiny.cloud/1/ul8oryd2nwmfpkyoidycer9xmfinqxishohn117m79ydl9vc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script> /*TinyMCE*/
+     tinymce.init({
+        selector: 'textarea',
+
+        plugins: `powerpaste a11ychecker tinymcespellchecker linkchecker wordcount
+         table advtable editimage autosave advlist anchor advcode image link lists
+          media mediaembed searchreplace visualblocks template`,
+
+        toolbar: `undo redo | styles | bold italic underline strikethrough | align
+         | table link image media | bullist numlist outdent indent`,
+
+        a11ychecker_level: 'aaa',
+
+        style_formats: [
+          {title: 'Heading 1', block: 'h1'},
+          {title: 'Heading 2', block: 'h2'},
+          {title: 'Paragraph', block: 'p'},
+          {title: 'Blockquote', block: 'blockquote'},
+          {title: 'Image formats'},
+          {title: 'Medium', selector: 'img', classes: 'medium'},
+        ],
+
+        object_resizing: false,
+
+        valid_classes: {
+          'img': 'medium',
+          'div': 'related-content'
+        },
+
+        image_caption: true,
+
+        templates: [
+          {
+            title: 'Related content',
+            description: 'This template inserts a related content block',
+            content: '<div class="related-content"><h3>Related content</h3><p><strong>{$rel_lede}</strong> {$rel_body}</p></div>'
+          }
+        ],
+
+        template_replace_values: {
+          rel_lede: 'Lorem ipsum',
+          rel_body: 'dolor sit amet...',
+        },
+
+        template_preview_replace_values: {
+          rel_lede: 'Lorem ipsum',
+          rel_body: 'dolor sit amet...',
+        },
+
+        noneditable_class: 'related-content',
+
+        content_langs: [
+          {title: 'Portuguese (BR)', code: 'pt_BR'},
+        ],
+
+        height: 540,
+
+        content_style: `
+          img {
+            height: auto;
+            margin: auto;
+            padding: 10px;
+            display: block;
+          }
+          img.medium {
+            max-width: 25%;
+          }
+        `
+      });
+</script>

@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="/css/card.css">
+<div class="mt-5">
+    <div class="row mb-2">
+        <div class="col mb-2">
+        <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
+        <p class="branco d-inline">Aposte Com Responsabilidade</p>
+        </div>
+        <div class="col excluirCol425">
+        </div>
+    </div>
+</div>
+
+{{#each cassinos}}
+    <div class="cardCassino mb-3">
+        <div class="box-logo" >
+            <div class="logo"  style="background: url('https://gurudasapostas.com.br/uploads-media/{{imgCassino}}') no-repeat center center; background-size: cover;"></div>
+        </div>
+
+        <div class="box-nomeInfos">
+            <h3 class="d-inline fw-bold h5">{{nomeCassino}}</h3>
+            <div class="box-tipoCassino my-1">
+                {{#if tipoCassino1}} <img src="../img/apsEsp.svg" alt="Aposta Esportiva" width="20px" height="20px" title="Aposta Esportiva">{{else}}{{/if}}
+                {{#if tipoCassino2}} <img src="../img/csnOnl.svg" alt="Cassino On-line" width="20px" height="20px" title="Cassino On-line">{{else}}{{/if}}
+                {{#if tipoCassino3}} <img src="../img/trdEsp.svg" alt="Trading Esportivo" width="20px" height="20px" title="Trading Esportivo">{{else}}{{/if}}
+            </div>
+            <br>
+            <small class="mt-1 text-muted">Classificação: <b>{{classCassino}}/5</b></small>
+        </div>
+
+        <div class="box-adjCassinos">
+            <ul>
+                <li>
+                    <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
+                    <p class="mb-0 px-2">{{adjCassino1}}</p>
+                </li>
+                <li>
+                    <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
+                    <p class="mb-0 px-2">{{adjCassino2}}</p>
+                </li>
+                <li>
+                    <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
+                    <p class="mb-0 px-2">{{adjCassino3}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="box-pagamentos">
+        <p>Pagamentos</p>
+        <div>
+            {{#if formaPagamento1}}<img src="../img/pix.svg" alt="PIX" width="25px" height="25px" title="PIX" class="imgPagamentos">{{else}}{{/if}}
+            {{#if formaPagamento2}}<img src="../img/boleto.svg" alt="Booleto" width="25px" height="25px" title="Boleto" class="imgPagamentos">{{else}}{{/if}}
+            {{#if formaPagamento3}}<img src="../img/creditcard.svg" alt="Cartão de crédito" width="25px" height="25px" title="Cartão de crédito" class="imgPagamentos">{{else}}{{/if}}
+            {{#if formaPagamento4}}<img src="../img/transbanc.svg" alt="Trasferência bancária" width="45px" height="25px" title="Transferência bancária" class="imgPagamentos largura">{{else}}{{/if}}
+            {{#if formaPagamento5}}<img src="../img/picpay.svg" alt="PicPay" width="45px" height="25px" title="PicPay" class="imgPagamentos largura">{{else}}{{/if}}
+            {{#if formaPagamento6}}<img src="../img/pay4fun.svg" alt="Pay4Fun" width="45px" height="25px"title="Pay4FUn" class="imgPagamentos largura">{{else}}{{/if}}
+            {{#if formaPagamento7}}<img src="../img/bitcoin.svg" alt="Cripto Moedas" width="25px" height="25px" title="Cripto Moedas" class="imgPagamentos">{{else}}{{/if}}
+        </div>
+        </div>
+
+        <div class="doisUltimos">
+            <div class="box-bonus">
+                <div class="selectBonus">
+                    <a href="{{linkCassino}}" class="btnBonus btn btn-outline-success d-block" target="_blank">
+                        <div class="giftValor">
+                            <span class="iconeMao"></span>
+                            <p class="btnValor">R${{valorBonus}}</p>
+                        </div>
+                        <p class="btnGanhar">Ganhar bônus<b> > </b></p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="box-links">
+                <a href="{{linkCassino}}" target="_blank"> <button class="btn btn-success">ABRIR</button></a>
+                <a href="/analiseCassino/{{id}}" class="abrirAnalise"> <button class="btn btn-warning">ANÁLISE</button></a>
+            </div>
+        </div>
+    </div>
+{{else}}
+    <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
+{{/each}}

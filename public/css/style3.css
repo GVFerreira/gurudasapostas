@@ -1,0 +1,117 @@
+/*====================================*/
+/*========= PÁGINA CASSINO ===========*/
+/*====================================*/
+
+#secao1c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("/img/bg-main2.webp");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#secao1c .container {
+    margin: -350px 0 0 0;   
+}
+
+#secao1c p {
+width: 45%;
+margin: 0 0 0 80px;
+}
+
+#secao1c h1 {
+width: 45%;
+margin: 0 80px 0 0;
+}
+
+#secao2c {
+    margin: -570px 0 0 0;
+}
+
+#secao2c .noinfo {
+    color: #FFF
+}
+
+#secao3c {
+    background: #3E7A96;
+    color: #FFF;
+}
+
+#secao4c {
+    background: url("/img/bg-secao10.webp") no-repeat top left;
+}
+
+#secao5c {
+    background: #FFF;
+}
+
+#secao6c {
+
+}
+
+#secao7c {
+    background: #3E7A96;
+    color: #FFF;
+}
+
+#secao8c {
+
+}
+
+#secao9c {
+    background: #6DB85B;
+    color: #FFF;
+}
+
+#secao9c .cardCassino {
+    color: #000
+}
+
+@media(max-width: 425px) {
+    #secao4c {
+        background: none;
+    }
+}
+
+@media(max-height: 810px) {
+    #secao1c .container {
+        margin: -250px 0 0 0;
+    }
+
+    #secao2c {
+        margin: -470px 0 0 0;
+    }
+}
+
+@media(max-height: 680px) {
+    #secao1c .container {
+        margin: -150px 0 0 0;
+    }
+
+    #secao2c {
+        margin: -370px 0 0 0;
+    }
+}
+
+@media(max-height: 560px) {
+    #secao1c .container {
+        margin: -80px 0 0 0;
+    }
+
+    #secao2c {
+        margin: -230px 0 0 0;
+    }
+}
+
+@media(max-height: 440px) {
+    #secao1c .container {
+        margin: -40px 0 0 0;
+    }
+
+    #secao2c {
+        margin: -230px 0 0 0;
+    }
+}

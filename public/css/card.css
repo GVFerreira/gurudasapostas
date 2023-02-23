@@ -1,0 +1,299 @@
+/*======= CARD CASSINO ========*/
+.cardCassino {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFF;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px #8888882a;
+}
+
+.cardCassino .box-logo {
+    width: 120px;
+    height: 120px;
+    min-width: 90px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(136, 136, 136, 0.4);
+}
+
+.cardCassino .box-logo .logo {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.cardCassino .box-nomeInfos {
+    width: 20%;
+    padding: 0 0 0 15px ;
+}
+
+.cardCassino .box-nomeInfos .box-tipoCassino {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.cardCassino .box-nomeInfos .box-tipoCassino img {
+    margin: 0 8px 0 0
+}
+
+
+.cardCassino .box-adjCassinos {
+    width: 20%;
+    border-left: 1.5px solid #d4d4d4;
+    padding-left: 25px
+}
+
+.cardCassino .box-adjCassinos ul {
+    padding: 0;
+}
+
+.cardCassino .box-adjCassinos ul li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0 0 5px 0;
+}
+
+.cardCassino .box-adjCassinos .checkIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.cardCassino .box-pagamentos {
+    width: 20%;
+    border-left: 1.5px solid #d4d4d4;
+    padding-left: 25px
+}
+
+.cardCassino .box-pagamentos p {
+    margin: 0 0 5px 0;
+}
+
+
+.cardCassino .box-pagamentos .imgPagamentos {
+    margin: 0 15px 10px 0;
+}
+
+.cardCassino .box-pagamentos .largura {
+    height: 20px !important;
+}
+
+
+.cardCassino .box-bonus {
+    display: inline;
+    margin: 0 15px 0 0;
+}
+
+.cardCassino .box-bonus .btnBonus {
+    text-decoration: none;
+    text-align: left;
+}
+
+.cardCassino .box-bonus .btnBonus .btnValor {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0;
+
+}
+
+.cardCassino .box-bonus .btnBonus .btnGanhar {
+    font-weight: 700;
+    margin: 0
+}
+
+#giftIcon.ativo{
+    fill: #FFF
+}
+
+.cardCassino .box-bonus div.selectBonus {
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.cardCassino .box-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px
+}
+
+.cardCassino .box-links button, .box-links a {
+    width: 100%;
+}
+
+.cardCassino .doisUltimos {
+    display: flex;
+}
+/*=============================*/
+
+/*========== RESPONSIVO ===========*/
+
+@media (max-width: 1200px) {
+    .cardCassino {
+        font-size: 0.9rem;
+    }
+
+}
+
+@media (max-width: 1024px) {
+    .cardCassino .box-adjCassinos {
+        padding: 0 0 0 5px;
+        margin: 0 0 0 10px;
+    }
+
+    .cardCassino .box-pagamentos {
+        padding: 0 0 0 5px;
+        width: 130px;
+    }
+
+    .cardCassino .box-bonus {
+    }
+
+    .cardCassino .selectBonus {
+        width: 140px;
+        height: 100%;
+
+    }
+
+    .cardCassino .selectBonus .btnGanhar {
+        font-size: 0.7em;
+    }
+
+    .cardCassino .box-links {
+        justify-content: space-between;
+    }
+
+    .cardCassino .box-links a {
+    }
+}
+
+@media (max-width: 991px) {
+    .cardCassino {
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+    }
+
+    .cardCassino .box-bonus {
+        width: 35%;
+    }
+
+    .cardCassino .box-bonus p {
+        font-size: 0.97em;
+        
+    }
+
+    .cardCassino .box-links {
+        display: flex;
+        flex-direction: row;
+        width: 100%
+    }
+
+    .cardCassino .box-links button,
+    .cardCassino .box-links a {
+        /* height: 80%; */
+    }
+
+    .cardCassino .giftValor {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .cardCassino .giftValor p {
+        margin: 0;
+        padding: 0 0 0 10px;
+        font-size: 0.97em;
+
+    }
+
+    .cardCassino .doisUltimos {
+        width: 100%;
+    }
+}
+
+@media(max-width: 768px) {
+    .cardCassino .box-nomeInfos {
+        margin-left: -40px
+    }
+
+    .cardCassino .doisUltimos {
+        margin: 25px 0 0 0;
+    }
+
+    .cardCassino .selectBonus {
+        height: auto;
+    }
+
+    .cardCassino .doisUltimos .box-links a,
+    .cardCassino .doisUltimos .box-links button {
+        font-size: 1.1em;
+        height: 100%;
+    }
+
+    .cardCassino .box-adjCassinos {
+        padding: 0 0 0 10px;
+        margin: 0 0 0 10px;
+    }
+    
+}
+
+@media(max-width: 550px) {
+    .cardCassino .box-nomeInfos {
+        margin-left: 0
+    }
+}
+
+@media(max-width: 425px) {
+    .cardCassino {
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+    }
+
+    .cardCassino .box-logo {
+        margin: 0 0 20px 0;
+    }
+
+    .cardCassino .box-nomeInfos {
+        width: 50%;
+        height: 140px;
+        padding: 0;
+    }
+
+    .cardCassino .box-adjCassinos {
+        width: 50%;
+        margin: 20px 0 0 0;
+        padding: 0;
+    }
+
+    .cardCassino .box-adjCassinos ul {
+        padding: 0 0 0 5px;
+        margin: 0;
+    }
+
+    .cardCassino .box-pagamentos {
+        margin: 20px 0 0 0;
+        width: 50%;
+    }
+
+    .cardCassino .doisUltimos {
+        display: block;
+        margin: 20px 0 0 0;
+    }
+
+    .cardCassino .doisUltimos .selectBonus {
+        width: 100%;
+    }
+
+    .cardCassino .doisUltimos .selectBonus .giftValor img {
+        width: 25px;
+    }
+}
+
+@media(max-width: 320px) {
+    
+}

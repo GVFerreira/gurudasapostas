@@ -1,0 +1,46 @@
+<main>
+    <section class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="p-0">Consulta de usuários</h1>
+            </div>
+            <div class="card-body">
+                {{#each users}}
+                    <div>
+                        <h3 class="p-0 mb-1">Nome: {{name}}</h3>
+                        <p class="mb-1">E-mail: {{email}}</p>
+                        <p class="mb-1">Data de criação: {{#formatDate createdAt}}{{/formatDate}}</p>
+                    </div>
+                    <div class="d-flex gap-3">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".exampleModal{{id}}">
+                        excluir
+                    </button>
+                    <a href="/admin/editarUsuario/{{_id}}" class="mr-2"><button class="btn btn-warning">Editar</button></a>
+                </div>
+
+                <div class="modal fade exampleModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>O usuário será excluído para sempre. Você tem certeza que deseja excluí-lo?</p>
+                            <p>{{name}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <a href="/admin/deletarUsuario/{{_id}}" class="btn btn-danger">Excluir</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                    <hr>
+                {{else}}
+                    <h3>Não há registro de usuários</h3>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+</main>

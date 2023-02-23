@@ -1,0 +1,120 @@
+{{#each errors}}
+    <div class="alert alert-danger">{{text}}</div>
+    {{else}}
+{{/each}}
+
+<div class="container my-5">
+    <h3>Nova postagem</h3>
+    <div class="card ">
+        <div class="card-body">
+            <form action="/admin/cadastrandoPostagem" method="POST" enctype="multipart/form-data">
+                <label for="tituloPostagem">Título:</label>
+                <input type="text" name="tituloPostagem" id="tituloPostagem" class="form-control mb-4" required>
+
+                <label for="descPostagem">Subtítulo:</label>
+                <input type="text" name="descPostagem" id="descPostagem" class="form-control mb-4" required>
+
+                <label for="imgPostagem" class="mb-1">Capa da postagem</label>
+                <input type="file" accept="image/*" name="imgPostagem" id="imgPostagem" class="form-control mb-4" required>
+
+                <label for="conteudoPostagem">Conteúdo:</label>
+                <textarea name="conteudoPostagem" id="conteudoPostagem"></textarea>
+
+                <label for="topicoPostagem" class="mt-4">Tópicos do conteúdo:</label>
+                <textarea name="topicoPostagem" id="topicoPostagem"></textarea>
+
+                <label for="categoriaPostagem" class="mt-4">Categoria:</label>
+                <select name="categoriaPostagem" id="categoriaPostagem" class="form-control mb-4" required>
+                    {{#each categorias}}
+                        <option value="{{_id}}">{{nomeCategoria}}</option>
+                    {{else}}
+                        <option value="0">Nenhuma categoria registrada</option>
+                    {{/each}}
+                </select>
+
+                <label for="cassinoPostagem">Cassino</label>
+                <select name="cassinoPostagem" id="cassinoPostagem" class="form-control mb-4" required>
+                    {{#each cassinos}}
+                        <option value="{{_id}}">{{nomeCassino}}</option>
+                    {{else}}
+                        <option value="0">Nenhum cassino registrado</option>
+                    {{/each}}
+                </select>
+
+                <button type="submit" class="btn btn-success mt-4">Criar postagem</button>
+                
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.tiny.cloud/1/ul8oryd2nwmfpkyoidycer9xmfinqxishohn117m79ydl9vc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script> /*TinyMCE*/
+     tinymce.init({
+        selector: 'textarea',
+
+        plugins: `powerpaste a11ychecker tinymcespellchecker linkchecker wordcount
+         table advtable editimage autosave advlist anchor advcode image link lists
+          media mediaembed searchreplace visualblocks template`,
+
+        toolbar: `undo redo | styles | bold italic underline strikethrough | align
+         | table link image media | bullist numlist outdent indent`,
+
+        a11ychecker_level: 'aaa',
+
+        style_formats: [
+          {title: 'Heading 1', block: 'h1'},
+          {title: 'Heading 2', block: 'h2'},
+          {title: 'Paragraph', block: 'p'},
+          {title: 'Blockquote', block: 'blockquote'},
+          {title: 'Image formats'},
+          {title: 'Medium', selector: 'img', classes: 'medium'},
+        ],
+
+        object_resizing: false,
+
+        valid_classes: {
+          'img': 'medium',
+          'div': 'related-content'
+        },
+
+        image_caption: true,
+
+        templates: [
+          {
+            title: 'Related content',
+            description: 'This template inserts a related content block',
+            content: '<div class="related-content"><h3>Related content</h3><p><strong>{$rel_lede}</strong> {$rel_body}</p></div>'
+          }
+        ],
+
+        template_replace_values: {
+          rel_lede: 'Lorem ipsum',
+          rel_body: 'dolor sit amet...',
+        },
+
+        template_preview_replace_values: {
+          rel_lede: 'Lorem ipsum',
+          rel_body: 'dolor sit amet...',
+        },
+
+        noneditable_class: 'related-content',
+
+        content_langs: [
+          {title: 'Portuguese (BR)', code: 'pt_BR'},
+        ],
+
+        height: 540,
+
+        content_style: `
+          img {
+            height: auto;
+            margin: auto;
+            padding: 10px;
+            display: block;
+          }
+          img.medium {
+            max-width: 25%;
+          }
+        `
+      });
+</script>

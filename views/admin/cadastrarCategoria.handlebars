@@ -1,0 +1,24 @@
+{{#each errors}}
+    <div class="alert alert-danger">{{text}}</div>
+    {{else}}
+{{/each}}
+
+<div class="container my-5">
+
+    <div class="card">
+        <div class="card-header">
+            <h1 class="p-0">Nova categoria:</h1>
+        </div>
+        <div class="card-body">
+            <form action="/admin/cadastrandoCategoria" method="POST">
+                <label for="nomeCategoria">Nome:</label>
+                <input type="text" name="nomeCategoria" id="nomeCategoria" class="form-control" required>
+
+                <label for="slugCategoria" class="mt-4">Slug:</label>
+                <input type="text" name="slugCategoria" id="slugCategoria" class="form-control" disabled="disabled">
+
+                <button type="submit" class="btn btn-success mt-4">Criar Categoria</button>
+            </form>
+        </div>
+    </div>
+</div>

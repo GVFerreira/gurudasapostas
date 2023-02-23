@@ -1,0 +1,109 @@
+<style>
+
+    .mb-4 {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-decoration: none;
+        color: black;
+    }
+
+    .my-5 span {
+        text-transform: uppercase;
+        color: #F5A011;
+    }
+
+    .p-4 {
+        border: 4px solid #F5A011;
+    }
+
+</style>
+<div class="container" id="card">
+    <div class="my-4">
+        <h1 class="my-5">Seja-bem vindo ao<br>
+            <span> painel administrativo</span>
+        </h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card p-4 mb-5">
+        <h4>Cassinos</h4>
+        <div class="mb-4 mt-4">
+            <div>
+                <a href="/admin/cadastrarCassino"><img src="../img/register.svg" width="80" class="mb-2">
+                <p>Cadastrar cassino</p>
+                </a>
+            </div>
+            <div>
+                <a href="/admin/consultarCassinos"><img src="../img/view.svg" width="80" class="mb-2">
+                <p>Consultar cassinos</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card p-4 mb-5">
+        <h4>Blog</h4>
+        <article class="row mb-5">
+            <div class="col">
+                <a href="/admin/cadastrarCategoria">
+                    <img src="../img/register.svg" width="80" class="mb-2">
+                    <p>Cadastrar categoria</p>
+                </a>
+            </div>
+            <div class="col">
+                <a href="/admin/consultarCategorias">
+                    <img src="../img/view.svg" width="80" class="mb-2">
+                    <p>Consultar categoria</p>
+                </a>
+            </div>
+        </article>
+        <article class="row">
+            <div class="col">
+                <a href="/admin/cadastrarPostagem">
+                    <img src="../img/register.svg" width="80" class="mb-2">
+                    <p>Cadastrar postagem</p>
+                </a>
+            </div>
+            <div class="col">
+                <a href="/admin/consultarPostagens">
+                    <img src="../img/view.svg" width="80" class="mb-2">
+                    <p>Consultar postagem</p>
+                </a>
+            </div>
+        </article>
+        <div class="mb-4 mt-4">
+            <div>
+                
+            </div>
+            <div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="card p-4 mb-5">
+        <h4>Usuários</h4>
+        <div class="mb-4 mt-4">
+            <div>
+                <a href="/admin/cadastrarUsuario">
+                    <img src="../img/register.svg" width="80" class="mb-2">
+                    <p>Cadastrar usuário</p>
+                </a>
+            </div>
+            <div>
+                <a href="/admin/consultarUsuarios"><img src="../img/view.svg" width="80" class="mb-2">
+                <p>Consultar usuários</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

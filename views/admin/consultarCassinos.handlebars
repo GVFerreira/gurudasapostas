@@ -1,0 +1,398 @@
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header">
+            <h1>Consulte os cassinos registrados</h1>
+        </div>
+        <div class="card-body">
+            {{#each cassinos}}
+                <div class="cardCassino w-100 mb-3">
+                    <div class="box-logo" >
+                        <div class="logo" style="background: url('https://gurudasapostas.com.br/uploads-media/{{imgCassino}}') no-repeat center center; background-size: cover;"></div>
+                    </div>
+
+                    <div class="box-nomeInfos">
+                        <h3 class="d-inline fw-bold h5">{{nomeCassino}}</h3>
+                        <div class="box-tipoCassino my-1">
+                            {{#if tipoCassino1}} <img src="../img/apsEsp.svg" alt="Aposta Esportiva" width="20px" height="20px" title="Aposta Esportiva">{{else}}{{/if}}
+                            {{#if tipoCassino2}} <img src="../img/csnOnl.svg" alt="Cassino On-line" width="20px" height="20px" title="Cassino On-line">{{else}}{{/if}}
+                            {{#if tipoCassino3}} <img src="../img/trdEsp.svg" alt="Trading Esportivo" width="20px" height="20px" title="Trading Esportivo">{{else}}{{/if}}
+                        </div>
+                        <br>
+                        <small class="mt-1 text-muted">Classificação: <b>{{classCassino}}/5</b></small>
+                    </div>
+
+                    <div class="box-adjCassinos">
+                        <ul>
+                            <li>
+                                <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
+                                <p class="mb-0 px-2">{{adjCassino1}}</p>
+                            </li>
+                            <li>
+                                <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
+                                <p class="mb-0 px-2">{{adjCassino2}}</p>
+                            </li>
+                            <li>
+                                <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
+                                <p class="mb-0 px-2">{{adjCassino3}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="box-pagamentos">
+                        <p>Pagamentos</p>
+                        <div>
+                            {{#if formaPagamento1}}<img src="../img/pix.svg" alt="PIX" width="25px" height="25px" title="PIX" class="imgPagamentos">{{else}}{{/if}}
+                            {{#if formaPagamento2}}<img src="../img/boleto.svg" alt="Booleto" width="25px" height="25px" title="Boleto" class="imgPagamentos">{{else}}{{/if}}
+                            {{#if formaPagamento3}}<img src="../img/creditcard.svg" alt="Cartão de crédito" width="25px" height="25px" title="Cartão de crédito" class="imgPagamentos">{{else}}{{/if}}
+                            {{#if formaPagamento4}}<img src="../img/transbanc.svg" alt="Trasferência bancária" width="45px" height="25px" title="Transferência bancária" class="imgPagamentos largura">{{else}}{{/if}}
+                            {{#if formaPagamento5}}<img src="../img/picpay.svg" alt="PicPay" width="45px" height="25px" title="PicPay" class="imgPagamentos largura">{{else}}{{/if}}
+                            {{#if formaPagamento6}}<img src="../img/pay4fun.svg" alt="Pay4Fun" width="45px" height="25px"title="Pay4FUn" class="imgPagamentos largura">{{else}}{{/if}}
+                            {{#if formaPagamento7}}<img src="../img/bitcoin.svg" alt="Cripto Moedas" width="25px" height="25px" title="Cripto Moedas" class="imgPagamentos">{{else}}{{/if}}
+                        </div>
+                    </div>
+
+                    <div class="doisUltimos">
+                        <div class="box-bonus">
+                            <div class="selectBonus">
+                                <a href="{{linkCassino}}" class="btnBonus btn btn-outline-success d-block" target="_blank">
+                                    <div class="giftValor">
+                                        <span class="iconeMao"></span>
+                                        <p class="btnValor">R${{valorBonus}}</p>
+                                    </div>
+                                    <p class="btnGanhar">Ganhar bônus<b> > </b></p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="box-links">
+                            <button type="button" class="btn btn-danger d-block" data-bs-toggle="modal" data-bs-target=".exampleModal{{id}}">
+                                excluir
+                            </button>
+                            <a href="/admin/editarCassino/{{_id}}" class="btn btn-warning abrirAnalise">editar</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="modal fade exampleModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>O cassino será excluído para sempre. Você tem certeza que deseja excluí-lo?</p>
+                                    <p>Nome: {{nomeCassino}}</p> 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    <a href="/admin/deletarCassino/{{_id}}" class="btn btn-danger">Excluir</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                    <h4>Não há processos registrados</h4>
+                {{/each}}
+                
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .cardCassino {
+        display: flex;
+        justify-content: space-between;
+        background-color: #FFF;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 3px #8888882a;
+    }
+
+    .cardCassino .box-logo {
+        width: 120px;
+        height: 120px;
+        min-width: 90px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(136, 136, 136, 0.4);
+    }
+
+    .cardCassino .box-logo .logo {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+    }
+
+    .cardCassino .box-nomeInfos {
+        width: 20%;
+        padding: 0 0 0 15px ;
+    }
+
+    .cardCassino .box-nomeInfos .box-tipoCassino {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .cardCassino .box-nomeInfos .box-tipoCassino img {
+        margin: 0 8px 0 0
+    }
+
+
+    .cardCassino .box-adjCassinos {
+        width: 20%;
+        border-left: 1.5px solid #d4d4d4;
+        padding-left: 25px
+    }
+
+    .cardCassino .box-adjCassinos ul {
+        padding: 0;
+    }
+
+    .cardCassino .box-adjCassinos ul li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin: 0 0 5px 0;
+    }
+
+    .cardCassino .box-adjCassinos .checkIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .cardCassino .box-pagamentos {
+        width: 20%;
+        border-left: 1.5px solid #d4d4d4;
+        padding-left: 25px
+    }
+
+    .cardCassino .box-pagamentos p {
+        margin: 0 0 5px 0;
+    }
+
+
+    .cardCassino .box-pagamentos .imgPagamentos {
+        margin: 0 15px 10px 0;
+    }
+
+    .cardCassino .box-pagamentos .largura {
+        height: 20px !important;
+    }
+
+
+    .cardCassino .box-bonus {
+        display: inline;
+        margin: 0 15px 0 0;
+    }
+
+    .cardCassino .box-bonus .btnBonus {
+        text-decoration: none;
+        text-align: left;
+    }
+
+    .cardCassino .box-bonus .btnBonus .btnValor {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin: 0;
+
+    }
+
+    .cardCassino .box-bonus .btnBonus .btnGanhar {
+        font-weight: 700;
+        margin: 0
+    }
+
+    #giftIcon.ativo{
+        fill: #FFF
+    }
+
+    .cardCassino .box-bonus div.selectBonus {
+        margin: 0 auto;
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .cardCassino .box-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px
+    }
+
+    .cardCassino .box-links button, .box-links a {
+        width: 100%;
+    }
+
+    .cardCassino .doisUltimos {
+        width: 20%;
+        display: flex;
+    }
+    /*=============================*/
+
+    /*========== RESPONSIVO ===========*/
+
+    @media (max-width: 1200px) {
+        .cardCassino {
+            font-size: 0.9rem;
+        }
+
+    }
+
+    @media (max-width: 1024px) {
+        .cardCassino .box-adjCassinos {
+            padding: 0 0 0 5px;
+            margin: 0 0 0 10px;
+        }
+
+        .cardCassino .box-pagamentos {
+            padding: 0 0 0 5px;
+            width: 130px;
+        }
+
+        .cardCassino .box-bonus {
+        }
+
+        .cardCassino .selectBonus {
+            width: 140px;
+            height: 100%;
+
+        }
+
+        .cardCassino .selectBonus .btnGanhar {
+            font-size: 0.7em;
+        }
+
+        .cardCassino .box-links {
+            justify-content: space-between;
+        }
+
+        .cardCassino .box-links a {
+        }
+    }
+
+    @media (max-width: 991px) {
+        .cardCassino {
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .cardCassino .box-bonus {
+            width: 35%;
+        }
+
+        .cardCassino .box-bonus p {
+            font-size: 0.97em;
+            
+        }
+
+        .cardCassino .box-links {
+            display: flex;
+            flex-direction: row;
+            width: 100%
+        }
+
+        .cardCassino .box-links button,
+        .cardCassino .box-links a {
+            /* height: 80%; */
+        }
+
+        .cardCassino .giftValor {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .cardCassino .giftValor p {
+            margin: 0;
+            padding: 0 0 0 10px;
+            font-size: 0.97em;
+
+        }
+
+        .cardCassino .doisUltimos {
+            /*width: 100%;*/
+        }
+    }
+
+    @media(max-width: 768px) {
+        .cardCassino .box-nomeInfos {
+            margin-left: -40px
+        }
+
+        .cardCassino .doisUltimos {
+            margin: 25px 0 0 0;
+        }
+
+        .cardCassino .selectBonus {
+            height: auto;
+        }
+
+        .cardCassino .doisUltimos .box-links a,
+        .cardCassino .doisUltimos .box-links button {
+            font-size: 1.1em;
+            height: 100%;
+        }
+
+        .cardCassino .box-adjCassinos {
+            padding: 0 0 0 10px;
+            margin: 0 0 0 10px;
+        }
+        
+    }
+
+    @media(max-width: 550px) {
+        .cardCassino .box-nomeInfos {
+            margin-left: 0
+        }
+    }
+
+    @media(max-width: 425px) {
+        .cardCassino {
+            width: 100%;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .cardCassino .box-logo {
+            margin: 0 0 20px 0;
+        }
+
+        .cardCassino .box-nomeInfos {
+            width: 50%;
+            height: 140px;
+            padding: 0;
+        }
+
+        .cardCassino .box-adjCassinos {
+            width: 50%;
+            margin: 20px 0 0 0;
+            padding: 0;
+        }
+
+        .cardCassino .box-adjCassinos ul {
+            padding: 0 0 0 5px;
+            margin: 0;
+        }
+
+        .cardCassino .box-pagamentos {
+            margin: 20px 0 0 0;
+            width: 50%;
+        }
+
+        .cardCassino .doisUltimos {
+            /*display: block;*/
+            margin: 20px 0 0 0;
+        }
+
+        .cardCassino .doisUltimos .selectBonus {
+            width: 100%;
+        }
+
+        .cardCassino .doisUltimos .selectBonus .giftValor img {
+            width: 25px;
+        }
+    }
+
+</style>

@@ -1,0 +1,65 @@
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h1 class="d-inline p-0">Consulte as postagens registradas</h1>
+            <a href="/admin/cadastrarPostagem"><button class="btn btn-success">Adicionar nova +</button></a>
+        </div>
+        <div class="card px-5 py-3" id="card">
+            {{#each postagens}}
+                <div class="mb-3">
+                    <h3>{{tituloPostagem}}</h3>
+                    <p>Slug: {{slugPostagem}}</p>
+                    <p>Categoria: {{categoriaPostagem.nomeCategoria}}</p>
+                    <p>Cassino: {{cassinoPostagem.nomeCassino}}</p>
+                    <p>Descrição: {{descPostagem}}</p>
+                    <small>Criado em: {{#formatDate createdAt}}{{/formatDate}}</small>
+                </div>
+
+                <div class="d-flex gap-3">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target=".exampleModal{{id}}">
+                        excluir
+                    </button>
+                    <a href="/admin/editarPostagem/{{_id}}" class="mr-2"><button class="btn btn-warning">Editar</button></a>
+                </div>
+
+                <div class="modal fade exampleModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>A postagem será excluída para sempre. Você tem certeza que deseja excluí-la?</p>
+                            <p>{{tituloPostagem}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <a href="/admin/deletarPostagem/{{_id}}" class="btn btn-danger">Excluir</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+            {{else}}
+                    <h4 class="text-center my-3 mx-3">Não há nenhum registro de categoria</h4>
+            {{/each}}
+        </div>
+    </div>{{!--tag que fehca a div.card principal --}}
+</div>        
+    
+<script>
+    function abrirModal(){
+        let modal = document.getElementById("modal")
+        modal.style.display = "block"
+        let escuro = document.getElementById("escuro")
+        escuro.style.display = "block"
+    }
+    function fecharModal(){
+        let modal = document.getElementById("modal")
+        modal.style.display = "none"
+        let escuro = document.getElementById("escuro")
+        escuro.style.display = "none"
+    }
+</script>

@@ -1,0 +1,113 @@
+/*====================================*/
+/*========== PÁGINA BÔNUS ============*/
+/*====================================*/
+
+#secao1b {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("/img/bg-main3.webp");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#secao1b .container {
+    margin: -350px 0 0 0;  
+}
+
+#secao1b p {
+width: 45%;
+margin: 0 0 0 80px;
+}
+
+#secao1b h1 {
+width: 45%;
+margin: 0 80px 0 0;
+}
+
+#secao2b {
+    margin: -570px 0 0 0;
+}
+
+#secao2b .noinfo {
+    color: #FFF
+}
+
+#secao3b {
+    background: #FFF;
+}
+
+#secao4b {
+    background: url("/img/bg-secao10.webp") no-repeat top left;
+}
+
+#secao5b {
+    background: url("/img/bg-secao8.webp") no-repeat center center;
+    background-size: cover;
+}
+
+#secao6b {
+    background: #FFF;
+}
+
+#secao7b {
+    background: #3E7A96;
+    color: #FFF;
+}
+
+#secao8b {
+
+}
+
+#secao9b {
+    background: #FFF;
+}
+
+@media(max-height: 810px) {
+    #secao1b .container {
+        margin: -250px 0 0 0;
+    }
+
+    #secao2b {
+        margin: -470px 0 0 0;
+    }
+}
+
+@media(max-height: 768px) {
+    .excluirCol768 {
+        display: none;
+    }
+}
+
+
+@media(max-height: 680px) {
+    #secao1b .container {
+        margin: -150px 0 0 0;
+    }
+
+    #secao2b {
+        margin: -370px 0 0 0;
+    }
+}
+
+@media(max-height: 560px) {
+    #secao1b .container {
+        margin: -80px 0 0 0;
+    }
+
+    #secao2b {
+        margin: -230px 0 0 0;
+    }
+}
+
+@media(max-height: 440px) {
+    #secao1b .container {
+        margin: -40px 0 0 0;
+    }
+
+    #secao2b {
+        margin: -230px 0 0 0;
+    }
+}
