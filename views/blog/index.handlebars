@@ -1,20 +1,20 @@
 <main>
     <section class="mt-5">
         <div class="container pt-5">
-            <div class="card-header rounded-top">
-                <h1 class="p-0">Notícias recentes</h1>
-            </div>
             <div class="card">
+                <div class="card-header w-100 rounded-top">
+                    <h1 class="p-0">Artigos</h1>
+                </div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row" id="post-grid">
                         {{#each postagens}}
                             <div class="col-4">
-                                <div class="article w-100" style="background: url(https://storage.googleapis.com/uploads-node/{{imgPostagem}}) no-repeat center center; background-size: cover;">
+                                <div class="article w-100" style="background: url('https://storage.googleapis.com/uploads-node/{{imgPostagem}}') no-repeat center center; background-size: cover;">
                                     <div class="overlap">
                                         <div class="scale">
                                             <small class="small my-0 py-0">{{#formatDate createdAt}}{{/formatDate}}</small>
                                             <h2 class="py-0 my-0 h5">{{tituloPostagem}}</h2>
-                                            <a href="blog/postagem/{{_id}}"><button class="btn btn-primary mt-2">Leia mais +</button></a>
+                                            <a href="blog/postagem/{{slugPostagem}}"><button class="btn btn-primary mt-2">Leia mais +</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -50,6 +50,10 @@
     }
     .card-body {
         width: 90%;
+    }
+    #post-grid {
+        display: flex;
+        flex-wrap: wrap;
     }
     .article {
         height: 400px;
@@ -92,13 +96,25 @@
 
     @media(max-width: 1200px) and (min-width: 768px) {
         .article {
-            width: 48% !important;
+            width: 100% !important;
+        }
+    }
+
+    @media(max-width: 992px){
+        .article {
+            width: 100% !important;
+        }
+        .col-4 {
+            width: 50%
         }
     }
 
     @media(max-width: 768px) {
         .article {
             width: 100%;
+        }
+        .col-4 {
+            width: 100%
         }
     }
 </style>

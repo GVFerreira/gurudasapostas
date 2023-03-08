@@ -35,7 +35,6 @@
     const uploadLogo = require("./helpers/uploadCassino")
     const uploadCapa = require("./helpers/uploadPostagem")
     const compression = require('compression')
-    
 
     //autenticação
     const passport = require("passport")
@@ -53,6 +52,7 @@
             resave: true,
             saveUninitialized: true
         }))
+        
         app.use(compression())
         app.use(passport.initialize())
         app.use(passport.session())
@@ -67,6 +67,9 @@
             res.locals.user = req.user || null
             next()
         })
+          
+        app.use(cookieconsent.init(cookieOptions));
+          
 
     //Body Parser
         app.use(bodyParser.urlencoded({extended: true}))
@@ -89,39 +92,33 @@
 
 //Rotas
     //Pública
-        app.get("/", (req, res) => {
-            Cassino.find().sort({createdAt: "DESC"}).then((cassinos) => {
-                const title = "Home"
-                const metaDescription = `Todas as informações sobre as melhores casas de apostas esportivas no país. Conheça todas as notícias sobre a Lei do Jogo Online no Brasil. Aprenda a se tornar um apostador de alto nível com os nossos guias de apostas gratuitos. Veja as listas dos Bônus que você não pode perder!`
-                res.render("index", {cassinos: cassinos, title, metaDescription})
-            }).catch((erro) => {
-                    req.flash("error_msg", "Houve um erro ao listar os casssinos")
-                    res.redirect("/")
-                })
+        app.get("/", async (req, res) => {
+            const title = "Home"
+            const metaDescription = `Todas as informações sobre as melhores casas de apostas esportivas no país. Conheça todas as notícias sobre a Lei do Jogo Online no Brasil. Aprenda a se tornar um apostador de alto nível com os nossos guias de apostas gratuitos. Veja as listas dos Bônus que você não pode perder!`
+
+            const todosCassinos = await Cassino.find().sort({orderList: "ASC"})
+            const melhoresCassinos = await Cassino.find({incMelhores: 1}).sort({orderList: "ASC"})
+            const brasilCassinos = await Cassino.find({incBrasil: 1}).sort({orderList: "ASC"})
+            const novosCassinos = await Cassino.find({incNovos: 1}).sort({orderList: "ASC"})
+            res.render("index", {todosCassinos, melhoresCassinos, brasilCassinos, novosCassinos, title, metaDescription})
         })
 
-        app.get("/cassinos" , (req, res) => {
-            Cassino.find().sort({createdAt: "DESC"}).then((cassinos) => {
-                const title = "Cassinos"
-                res.render("cassinos", {cassinos: cassinos, title})
-            }).catch((erro) => {
-                    req.flash("error_msg", "Houve um erro ao listar os casssinos")
-                    res.redirect("/")
-                })
+        app.get("/cassinos", async (req, res) => {
+            const title = "Cassinos"
+            const todosCassinos = await Cassino.find().sort({orderList: "ASC"})
+            const bonusCassinos = await Cassino.find({bonusGratis: 1}).sort({orderList: "ASC"})
+            res.render("cassinos", {todosCassinos, bonusCassinos, title})
         })
 
-        app.get("/bonus" , (req, res) => {
-            Cassino.find().sort({createdAt: "DESC"}).then((cassinos) => {
-                const title = "Bônus de cadastro" 
-                res.render("bonus", {cassinos: cassinos, title})
-            }).catch((erro) => {
-                    req.flash("error_msg", "Houve um erro ao listar os casssinos")
-                    res.redirect("/")
-                })
+        app.get("/bonus", async (req, res) => {
+            const title = "Bônus de cadastro" 
+            const todosCassinos = await Cassino.find().sort({orderList: "ASC"})
+            const bonusCassinos = await Cassino.find({bonusGratis: 1}).sort({orderList: "ASC"})
+            res.render("bonus", {todosCassinos, bonusCassinos, title})
         })
 
-        app.get("/analiseCassino/:id", (req, res) => {
-            Cassino.findOne({_id: req.params.id}).then((cassino) => {
+        app.get("/analiseCassino/:slug", (req, res) => {
+            Cassino.findOne({slugCassino: req.params.slug}).then((cassino) => {
                 const title = cassino.nomeCassino
                 res.render("analiseCassino", {cassino: cassino, title})
             }).catch((erro) => {
@@ -146,15 +143,14 @@
             res.render("jogo-responsavel", {title: "Jogo responsável"})
         })
 
-        app.get("/404", (req, res) => {
-            res.send("Erro 404!", {title: "Erro 404"})
-        })
-
         
-    //Rotas alternativas
+        //Rotas alternativas
         app.use("/admin", /*isAdmin,*/ admin)
         app.use("/users", users)
         app.use("/blog", blog)
+        app.use((req, res, next) => {
+            res.status(404).render("404", {title: "Error 404"})
+        })
 
 //Outros
     app.listen(process.env.PORT || 8000, () => {

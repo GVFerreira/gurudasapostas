@@ -1,80 +1,76 @@
-<link rel="stylesheet" href="/css/card.css">
-<div class="mt-5">
-    <div class="row mb-2">
-        <div class="col mb-2">
-        <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
-        <p class="branco d-inline">Aposte Com Responsabilidade</p>
+<div class="cardCassino mb-4" style="border: 5px solid {{colorCard}}">
+    {{#if tagCard}}
+        <p class="tag" style="background-color: {{colorCard}}">{{tagCard}}</p>
+    {{else}}
+    {{/if}}
+    <div class="box-logo">
+        <div class="logo" style="background: url('https://gurudasapostas.com.br/uploads-media/{{imgCassino}}') no-repeat center center; background-size: cover;"></div>
+    </div>
+
+    <div class="box-nomeInfos">
+        <h3 class="d-inline fw-bold h4">{{nomeCassino}}</h3>
+        <div class="box-tipoCassino my-1">
+            {{#if tipoCassino1}} <img src="../img/apsEsp.svg" alt="Aposta Esportiva" width="20px" height="20px" title="Aposta Esportiva">{{else}}{{/if}}
+            {{#if tipoCassino2}} <img src="../img/csnOnl.svg" alt="Cassino On-line" width="20px" height="20px" title="Cassino On-line">{{else}}{{/if}}
+            {{#if tipoCassino3}} <img src="../img/trdEsp.svg" alt="Trading Esportivo" width="20px" height="20px" title="Trading Esportivo">{{else}}{{/if}}
         </div>
-        <div class="col excluirCol425">
+        <br>
+        <small class="mt-1 text-muted">Classificação: <b>{{classCassino}}/5</b></small>
+        <img src="../img/star{{classCassino}}.png" width="50%" alt="">
+    </div>
+
+    <div class="box-adjCassinos">
+        <ul>
+            <li>
+                <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
+                <p class="mb-0 px-2">{{adjCassino1}}</p>
+            </li>
+            <li>
+                <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
+                <p class="mb-0 px-2">{{adjCassino2}}</p>
+            </li>
+            <li>
+                <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
+                <p class="mb-0 px-2">{{adjCassino3}}</p>
+            </li>
+        </ul>
+    </div>
+    <div class="box-pagamentos">
+    <p>Pagamentos</p>
+    <div>
+        {{#if formaPagamento1}}<img src="../img/pix.svg" alt="PIX" width="25px" height="25px" title="PIX" class="imgPagamentos">{{else}}{{/if}}
+        {{#if formaPagamento2}}<img src="../img/boleto.svg" alt="Booleto" width="25px" height="25px" title="Boleto" class="imgPagamentos">{{else}}{{/if}}
+        {{#if formaPagamento3}}<img src="../img/creditcard.svg" alt="Cartão de crédito" width="25px" height="25px" title="Cartão de crédito" class="imgPagamentos">{{else}}{{/if}}
+        {{#if formaPagamento4}}<img src="../img/transbanc.svg" alt="Trasferência bancária" width="45px" height="25px" title="Transferência bancária" class="imgPagamentos largura">{{else}}{{/if}}
+        {{#if formaPagamento5}}<img src="../img/picpay.svg" alt="PicPay" width="45px" height="25px" title="PicPay" class="imgPagamentos largura">{{else}}{{/if}}
+        {{#if formaPagamento6}}<img src="../img/pay4fun.svg" alt="Pay4Fun" width="45px" height="25px"title="Pay4FUn" class="imgPagamentos largura">{{else}}{{/if}}
+        {{#if formaPagamento7}}<img src="../img/bitcoin.svg" alt="Cripto Moedas" width="25px" height="25px" title="Cripto Moedas" class="imgPagamentos">{{else}}{{/if}}
+        {{#if formaPagamento8}}<img src="../img/astropay.svg" alt="AstroPay" width="45px" height="25px" title="AstroPay" class="imgPagamentos largura">{{else}}{{/if}}
+        {{#if formaPagamento9}}<img src="../img/ecopayz.svg" alt="EcoPayz" width="45px" height="25px" title="EcoPayz" class="imgPagamentos largura">{{else}}{{/if}}
+        {{#if formaPagamento10}}<img src="../img/neteller.svg" alt="Neteller" width="45px" height="25px" title="Neteller" class="imgPagamentos largura">{{else}}{{/if}}
+    </div>
+    </div>
+
+    <div class="doisUltimos">
+        <div class="box-bonus">
+            <div class="selectBonus">
+                <a href="{{linkCassino}}" class="btnBonus btn btn-outline-success d-block" target="_blank">
+                    <div class="giftValor">
+                        <p class="mb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gift-fill" viewBox="0 0 16 16">
+                                <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zm6 4v7.5a1.5 1.5 0 0 1-1.5 1.5H9V7h6zM2.5 16A1.5 1.5 0 0 1 1 14.5V7h6v9H2.5z"/>
+                            </svg>
+                        </p>
+                        <p class="btnValor">R${{valorBonus}}</p>
+                    </div>
+                    <p class="btnGanhar">Ganhar bônus<b> > </b></p>
+                </a>
+            </div>
+        </div>
+
+        <div class="box-links">
+            <a href="{{linkCassino}}" target="_blank"> <button class="btn btn-success">ABRIR</button></a>
+            <a href="/analiseCassino/{{slugCassino}}" class="abrirAnalise"> <button class="btn btn-warning">ANÁLISE</button></a>
         </div>
     </div>
 </div>
-
-{{#each cassinos}}
-    <div class="cardCassino mb-3">
-        <div class="box-logo" >
-            <div class="logo"  style="background: url('https://gurudasapostas.com.br/uploads-media/{{imgCassino}}') no-repeat center center; background-size: cover;"></div>
-        </div>
-
-        <div class="box-nomeInfos">
-            <h3 class="d-inline fw-bold h5">{{nomeCassino}}</h3>
-            <div class="box-tipoCassino my-1">
-                {{#if tipoCassino1}} <img src="../img/apsEsp.svg" alt="Aposta Esportiva" width="20px" height="20px" title="Aposta Esportiva">{{else}}{{/if}}
-                {{#if tipoCassino2}} <img src="../img/csnOnl.svg" alt="Cassino On-line" width="20px" height="20px" title="Cassino On-line">{{else}}{{/if}}
-                {{#if tipoCassino3}} <img src="../img/trdEsp.svg" alt="Trading Esportivo" width="20px" height="20px" title="Trading Esportivo">{{else}}{{/if}}
-            </div>
-            <br>
-            <small class="mt-1 text-muted">Classificação: <b>{{classCassino}}/5</b></small>
-        </div>
-
-        <div class="box-adjCassinos">
-            <ul>
-                <li>
-                    <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
-                    <p class="mb-0 px-2">{{adjCassino1}}</p>
-                </li>
-                <li>
-                    <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
-                    <p class="mb-0 px-2">{{adjCassino2}}</p>
-                </li>
-                <li>
-                    <img src="../img/check.svg" alt="Checked" width="20px" height="20px" class="checkIcon">
-                    <p class="mb-0 px-2">{{adjCassino3}}</p>
-                </li>
-            </ul>
-        </div>
-        <div class="box-pagamentos">
-        <p>Pagamentos</p>
-        <div>
-            {{#if formaPagamento1}}<img src="../img/pix.svg" alt="PIX" width="25px" height="25px" title="PIX" class="imgPagamentos">{{else}}{{/if}}
-            {{#if formaPagamento2}}<img src="../img/boleto.svg" alt="Booleto" width="25px" height="25px" title="Boleto" class="imgPagamentos">{{else}}{{/if}}
-            {{#if formaPagamento3}}<img src="../img/creditcard.svg" alt="Cartão de crédito" width="25px" height="25px" title="Cartão de crédito" class="imgPagamentos">{{else}}{{/if}}
-            {{#if formaPagamento4}}<img src="../img/transbanc.svg" alt="Trasferência bancária" width="45px" height="25px" title="Transferência bancária" class="imgPagamentos largura">{{else}}{{/if}}
-            {{#if formaPagamento5}}<img src="../img/picpay.svg" alt="PicPay" width="45px" height="25px" title="PicPay" class="imgPagamentos largura">{{else}}{{/if}}
-            {{#if formaPagamento6}}<img src="../img/pay4fun.svg" alt="Pay4Fun" width="45px" height="25px"title="Pay4FUn" class="imgPagamentos largura">{{else}}{{/if}}
-            {{#if formaPagamento7}}<img src="../img/bitcoin.svg" alt="Cripto Moedas" width="25px" height="25px" title="Cripto Moedas" class="imgPagamentos">{{else}}{{/if}}
-        </div>
-        </div>
-
-        <div class="doisUltimos">
-            <div class="box-bonus">
-                <div class="selectBonus">
-                    <a href="{{linkCassino}}" class="btnBonus btn btn-outline-success d-block" target="_blank">
-                        <div class="giftValor">
-                            <span class="iconeMao"></span>
-                            <p class="btnValor">R${{valorBonus}}</p>
-                        </div>
-                        <p class="btnGanhar">Ganhar bônus<b> > </b></p>
-                    </a>
-                </div>
-            </div>
-
-            <div class="box-links">
-                <a href="{{linkCassino}}" target="_blank"> <button class="btn btn-success">ABRIR</button></a>
-                <a href="/analiseCassino/{{id}}" class="abrirAnalise"> <button class="btn btn-warning">ANÁLISE</button></a>
-            </div>
-        </div>
-    </div>
-{{else}}
-    <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
-{{/each}}

@@ -15,7 +15,20 @@
 
     <section id="secao2c">
         <div class="container">
-            {{>_cardCassino}}
+            <div class="mt-5">
+                <div class="row mb-2">
+                    <div class="col mb-2">
+                        <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
+                        <p class="branco d-inline">Aposte Com Responsabilidade</p>
+                    </div>
+                    <div class="col excluirCol425"></div>
+                </div>
+            </div>
+            {{#each todosCassinos}}
+                {{>_cardCassino}}
+            {{else}}
+                <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
+            {{/each}}
         </div>
     </section>
 
@@ -248,7 +261,20 @@
                 <div class="col excluirCol425">
                 </div>
             </div>
-            {{>_cardCassino}}
+            <div class="mt-5">
+                <div class="row mb-2">
+                    <div class="col mb-2">
+                        <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
+                        <p class="branco d-inline">Aposte Com Responsabilidade</p>
+                    </div>
+                    <div class="col excluirCol425"></div>
+                </div>
+            </div>
+            {{#each bonusCassinos}}
+                {{>_cardCassino}}
+            {{else}}
+                <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
+            {{/each}}
         </div>
     </section>
 

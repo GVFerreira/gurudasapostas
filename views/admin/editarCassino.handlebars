@@ -12,11 +12,28 @@
             <form action="/admin/editandoCassino" method="POST" enctype="multipart/form-data">
                 <input type="hidden" class="form-control mb-4" name="id" id="id" value="{{cassino._id}}">
 
+                <div class="input-group">
+                    <span class="input-group-text" id="orderList">#</span>
+                    <input type="text" style="width: 25% !important" class="form-control" value="{{cassino.orderList}}" id="orderList" name="orderList">
+                </div>
+                <p class="d-block  mb-4">Selecione a ordem da listagem dos cassinos</p>
+
                 <label for="nomeCassino" class="mb-1">Nome do cassino</label>
                 <input type="text" name="nomeCassino" id="nomeCassino" value="{{cassino.nomeCassino}}" class="form-control mb-4" required>
 
                 <label for="imgCassino" class="mb-1">Logotipo do cassino</label>
                 <input type="file" name="imgCassino" id="imgCassino" class="form-control mb-4">
+
+                 <div class="d-flex gap-5 border p-2 mb-4 w-50">
+                  <div>
+                     <label for="colorCard">Cor das bordas</label>
+                    <input type="color" {{#if cassino.colorCard}}value="{{cassino.colorCard}}"{{else}}value="#FFFFFF"{{/if}} name="colorCard" id="colorCard" class="form-control form-control-color">
+                  </div>
+                  <div>
+                    <label for="tagCard">Tag para card</label>
+                    <input type="text" value="{{cassino.tagCard}}" name="tagCard" id="tagCard" class="form-control">
+                  </div>
+                </div>
 
                 <label for="classCassino">Classificação do cassino:</label>
                 <input type="range" id="classCassino" name="classCassino" value="{{cassino.classCassino}}" min="0" max="5">
@@ -113,11 +130,35 @@
                     <label class="form-check-label mb-4" for="formaPagamento7">Crypto</label><br>
                 {{/if}}
 
+                {{#if cassino.formaPagamento8}}
+                    <input type="checkbox" class="form-check-input mb-2" id="formaPagamento8" name="formaPagamento8" checked>
+                    <label class="form-check-label mb-4" for="formaPagamento8">AstroPay</label><br>
+                {{else}}
+                    <input type="checkbox" class="form-check-input mb-2" id="formaPagamento8" name="formaPagamento8">
+                    <label class="form-check-label mb-4" for="formaPagamento8">AstroPay</label><br>
+                {{/if}}
+
+                {{#if cassino.formaPagamento9}}
+                    <input type="checkbox" class="form-check-input mb-2" id="formaPagamento9" name="formaPagamento9" checked>
+                    <label class="form-check-label mb-4" for="formaPagamento9">Ecopayz</label><br>
+                {{else}}
+                    <input type="checkbox" class="form-check-input mb-2" id="formaPagamento9" name="formaPagamento9">
+                    <label class="form-check-label mb-4" for="formaPagamento9">Ecopayz</label><br>
+                {{/if}}
+
+                {{#if cassino.formaPagamento10}}
+                    <input type="checkbox" class="form-check-input mb-2" id="formaPagamento10" name="formaPagamento10" checked>
+                    <label class="form-check-label mb-4" for="formaPagamento10">Neteller</label><br>
+                {{else}}
+                    <input type="checkbox" class="form-check-input mb-2" id="formaPagamento10" name="formaPagamento10">
+                    <label class="form-check-label mb-4" for="formaPagamento10">Neteller</label><br>
+                {{/if}}
+
                 <label for="valorBonus" class="mb-1">Valor do bônus</label>
                 <input type="number" name="valorBonus" id="valorBonus" class="form-control mb-4" value="{{cassino.valorBonus}}" required>
 
 
-                <label for="linkCassino" class="mb-1">Link de afilhiado:</label>
+                <label for="linkCassino" class="mb-1">Link de afiliado:</label>
                 <input type="url" name="linkCassino" id="linkCassino" class="form-control mb-4" value="{{cassino.linkCassino}}" required>
 
 

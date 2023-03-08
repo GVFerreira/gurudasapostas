@@ -35,8 +35,8 @@ router.get("/", (req, res) => {
     })
 })
 
-router.get('/postagem/:id', (req, res) => {
-    Postagem.findOne({_id: req.params.id}).populate("categoriaPostagem cassinoPostagem").then((postagem) => {
+router.get('/postagem/:slug', (req, res) => {
+    Postagem.findOne({slugPostagem: req.params.slug}).populate("categoriaPostagem cassinoPostagem").then((postagem) => {
         res.render('blog/postagem', {postagem: postagem, title: postagem.tituloPostagem})
     }).catch((erro) => {
             req.flash("error_msg", "Houve um erro ao exibir a postagem")

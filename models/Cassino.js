@@ -2,11 +2,26 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const Cassino = new Schema({
+    orderList: {
+        type: Number,
+        default: 50
+    },
     nomeCassino:{
         type: String,
         required: true
     },
+    slugCassino:{
+        type: String,
+        required: true
+    },
     imgCassino: {
+        type: String
+    },
+    colorCard: {
+        type: String,
+        default: "#FFFFFF"
+    },
+    tagCard: {
         type: String
     },
     classCassino: {
@@ -53,6 +68,15 @@ const Cassino = new Schema({
         type: String,
     },
     formaPagamento7: {
+        type: String,
+    },
+    formaPagamento8: {
+        type: String,
+    },
+    formaPagamento9: {
+        type: String,
+    },
+    formaPagamento10: {
         type: String,
     },
     valorBonus: {

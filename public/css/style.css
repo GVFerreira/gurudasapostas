@@ -1,6 +1,6 @@
 /* ========== GERAL ===========*/
 body {
-    background-color: #F2F2F3;
+    background-color: #f7f7f7;
 }
 
 h1, 
@@ -46,10 +46,6 @@ color: #f2f2f3
 
 .mais18 {
     margin: 0 15px;
-}
-
-label {
-    /* font-weight: 500; */
 }
 
 ol {
@@ -125,9 +121,6 @@ margin: 0 80px 0 0;
     color: #000
 }
 
-#secao5 {
-}
-
 #secao5 .torcedores {
     width: 100% !important;
     border-radius: 5px
@@ -152,10 +145,6 @@ margin: 0 80px 0 0;
     color: #000;
 }
 
-#secao9 {
-
-}
-
 #secao9 img {
     margin: 60px 0 0 0;
 }
@@ -178,10 +167,6 @@ margin: 0 80px 0 0;
 
 #secao11 .cardCassino {
     color: #000;
-}
-
-#secao12 {
-
 }
 
 #secao12 .card {

@@ -1,11 +1,27 @@
 /*======= CARD CASSINO ========*/
 .cardCassino {
     display: flex;
+    position: relative;
     justify-content: space-between;
     background-color: #FFF;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 1px 1px 3px #8888882a;
+}
+
+.cardCassino .tag {
+    position: absolute;
+    top: 5px;
+    left: -10px;
+
+    z-index: 2;
+
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+
+    font-size: 16px;
+    font-weight: bolder;
+    color: #FFF;
 }
 
 .cardCassino .box-logo {
@@ -151,8 +167,7 @@
         width: 130px;
     }
 
-    .cardCassino .box-bonus {
-    }
+    
 
     .cardCassino .selectBonus {
         width: 140px;
@@ -168,8 +183,7 @@
         justify-content: space-between;
     }
 
-    .cardCassino .box-links a {
-    }
+    
 }
 
 @media (max-width: 991px) {
@@ -193,19 +207,14 @@
         width: 100%
     }
 
-    .cardCassino .box-links button,
-    .cardCassino .box-links a {
-        /* height: 80%; */
-    }
-
     .cardCassino .giftValor {
         display: flex;
         flex-direction: row;
+        gap: 1rem
     }
 
     .cardCassino .giftValor p {
         margin: 0;
-        padding: 0 0 0 10px;
         font-size: 0.97em;
 
     }

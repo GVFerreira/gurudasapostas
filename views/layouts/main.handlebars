@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-      <link rel="stylesheet" href="/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/css/style.css">
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="description" content="{{metaDescription}}">
-      <link rel="shortcut icon" href="/img/favicon.svg" type="image/x-icon">
-      <title>{{title}} - Guru das Apostas</title>
-      <style>
-        .tox-notification {
-          display: none !important
-        }
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/card.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{metaDescription}}">
+    <link rel="shortcut icon" href="/img/favicon.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>{{title}} - Guru das Apostas</title>
+    <style>
+      .tox-notification {
+        display: none !important
+      }
 
-        #errorAlert {
-          margin: 25px 0 0 0;
-        }
-      </style>
+      #errorAlert {
+        margin: 25px 0 0 0;
+      }
+    </style>
   </head>
-  <body onscroll="esconderMenu()" onresize="handleEmoji()">
+  <body onscroll="esconderMenu()">
       {{#if user}}
         {{>_headerON}}
       {{else}}
@@ -39,4 +42,13 @@
   </body>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
   <script src="/js/bootstrap.js"></script>
+  <script>
+    const cookieOptions = {
+      message: 'Este site usa cookies para melhorar sua experiência.',
+      dismiss: 'OK',
+      learnMore: 'Mais informações',
+      link: '/politica-privacidade',
+      theme: 'dark-bottom'
+    }
+  </script>
 </html>

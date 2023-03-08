@@ -14,7 +14,20 @@
 
   <section id="secao2">
     <div class="container">
-      {{>_cardCassino}}
+      <div class="mt-5">
+        <div class="row mb-2">
+          <div class="col mb-2">
+            <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
+            <p class="branco d-inline">Aposte Com Responsabilidade</p>
+          </div>
+          <div class="col excluirCol425"></div>
+        </div>
+      </div>
+      {{#each todosCassinos}}
+        {{>_cardCassino}}
+      {{else}}
+        <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
+      {{/each}}
     </div>
   </section>
 
@@ -74,11 +87,22 @@
         <div class="col">
           <p>Conheça as melhores casas de apostas em atuação no Brasil! Todas têm alta reputação internacional e trazem plataformas de aposta seguras!</p>
         </div>
-        <div class="col excluirCol425">
-
+        <div class="col excluirCol425"></div>
+      </div>
+      <div class="mt-5">
+        <div class="row mb-2">
+          <div class="col mb-2">
+            <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
+            <p class="branco d-inline">Aposte Com Responsabilidade</p>
+          </div>
+          <div class="col excluirCol425"></div>
         </div>
       </div>
-      {{>_cardCassino}}
+      {{#each melhoresCassinos}}
+        {{>_cardCassino}}
+      {{else}}
+        <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
+      {{/each}}
     </div>
   </section>
 
@@ -206,11 +230,22 @@
         <div class="col">
           <p>Ainda não temos casas de apostas brasileiras, mas quando a regulamentação ocorrer poderemos ter casas 100% brazucas! Enquanto isso, pode apostar nas melhores casas de apostas no Brasil em 2022!</p>
         </div>
-        <div class="col excluirCol425">
-
+        <div class="col excluirCol425"></div>
+      </div>
+      <div class="mt-5">
+        <div class="row mb-2">
+          <div class="col mb-2">
+            <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
+            <p class="branco d-inline">Aposte Com Responsabilidade</p>
+          </div>
+          <div class="col excluirCol425"></div>
         </div>
       </div>
-      {{>_cardCassino}}
+      {{#each brasilCassinos}}
+        {{>_cardCassino}}
+      {{else}}
+        <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
+      {{/each}}
     </div>
   </section>
 
@@ -289,11 +324,22 @@
         <div class="col">
           <p>Sempre há novidades no mercado de apostas online brasileiro, isso inclui a presença de novas casas de apostas. Registre-se e teste as mais</p>
         </div>
-        <div class="col excluirCol425">
-          
+        <div class="col excluirCol425"></div>
+      </div>
+      <div class="mt-5">
+        <div class="row mb-2">
+          <div class="col mb-2">
+            <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
+            <p class="branco d-inline">Aposte Com Responsabilidade</p>
+          </div>
+          <div class="col excluirCol425"></div>
         </div>
       </div>
-      {{>_cardCassino}}
+      {{#each novosCassinos}}
+        {{>_cardCassino}}
+      {{else}}
+        <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
+      {{/each}}
     </div>
   </section>
 
@@ -403,8 +449,6 @@
     }
   }
 </style>
-<script async data-uid="ee31791066" src="https://fantastic-thinker-8164.ck.page/ee31791066/index.js"></script>
-<script async data-uid="0e31ae32ec" src="https://fantastic-thinker-8164.ck.page/0e31ae32ec/index.js"></script>
 <script defer src="/js/flying-pages.min.js"></script> 
 <script> /*FlyingPages*/
   window.addEventListener("load", () => {

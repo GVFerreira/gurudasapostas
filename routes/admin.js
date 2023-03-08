@@ -222,10 +222,38 @@ router.post("/cadastrandoCassino", uploadCassino.single('imgCassino'), (req, res
         })
     
         stream.end(req.file.buffer)
-    
+        
+        const slug = req.body.nomeCassino
+        function criarSlug(str) {
+            // Converter para minúsculas e substituir espaços por traços
+            str = str.toLowerCase().replace(/\s+/g, '-');
+
+            // Substituir caracteres especiais
+            const from = "ãàáäâèéëêìíïîõòóöôùúüûñç·/_,:;'";
+            const to   = "aaaaaeeeeiiiiooooouuuunc------";
+            for (let i = 0, l = from.length; i < l; i++) {
+                str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
+
+            // Remover caracteres especiais restantes
+            str = str.replace(/[^a-z0-9 -]/g, '');
+
+            // Remover traços duplicados
+            str = str.replace(/-+/g, '-');
+
+            // Remover traços no início e no fim da string
+            str = str.replace(/^-+|-+$/g, '');
+
+            return str;
+        }
+
         const newCassino = new Cassino({
+            orderList: req.body.orderList,
             nomeCassino: req.body.nomeCassino,
+            slugCassino: criarSlug(slug),
             imgCassino: req.file.filename,
+            colorCard: req.body.colorCard,
+            tagCard: req.body.tagCard,
             classCassino: req.body.classCassino,
             tipoCassino1: req.body.tipoCassino1,
             tipoCassino2: req.body.tipoCassino2,
@@ -240,6 +268,9 @@ router.post("/cadastrandoCassino", uploadCassino.single('imgCassino'), (req, res
             formaPagamento5: req.body.formaPagamento5,
             formaPagamento6: req.body.formaPagamento6,
             formaPagamento7: req.body.formaPagamento7,
+            formaPagamento8: req.body.formaPagamento8,
+            formaPagamento9: req.body.formaPagamento9,
+            formaPagamento10: req.body.formaPagamento10,
             valorBonus: req.body.valorBonus,
             bonusGratis: req.body.bonusGratis,
             linkCassino: req.body.linkCassino,
@@ -290,38 +321,68 @@ router.get("/editarCassino/:id", (req, res) => {
 
 router.post("/editandoCassino", uploadCassino.single('imgCassino'), (req, res) => {
     if(req.file === undefined) {
+        const slug = req.body.nomeCassino
+        function criarSlug(str) {
+            // Converter para minúsculas e substituir espaços por traços
+            str = str.toLowerCase().replace(/\s+/g, '-');
+
+            // Substituir caracteres especiais
+            const from = "ãàáäâèéëêìíïîõòóöôùúüûñç·/_,:;'";
+            const to   = "aaaaaeeeeiiiiooooouuuunc------";
+            for (let i = 0, l = from.length; i < l; i++) {
+                str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
+
+            // Remover caracteres especiais restantes
+            str = str.replace(/[^a-z0-9 -]/g, '');
+
+            // Remover traços duplicados
+            str = str.replace(/-+/g, '-');
+
+            // Remover traços no início e no fim da string
+            str = str.replace(/^-+|-+$/g, '');
+
+            return str;
+        }
         Cassino.findOne({_id: req.body.id}).then((cassino) => {
-            cassino.nomeCassino = req.body.nomeCassino,
-            cassino.classCassino = req.body.classCassino,
-            cassino.tipoCassino1 = req.body.tipoCassino1,
-            cassino.tipoCassino2 = req.body.tipoCassino2,
-            cassino.tipoCassino3 = req.body.tipoCassino3,
-            cassino.adjCassino1 = req.body.adjCassino1,
-            cassino.adjCassino2 = req.body.adjCassino2,
-            cassino.adjCassino3 = req.body.adjCassino3,
-            cassino.formaPagamento1 = req.body.formaPagamento1,
-            cassino.formaPagamento2 = req.body.formaPagamento2,
-            cassino.formaPagamento3 = req.body.formaPagamento3,
-            cassino.formaPagamento4 = req.body.formaPagamento4,
-            cassino.formaPagamento5 = req.body.formaPagamento5,
-            cassino.formaPagamento6 = req.body.formaPagamento6,
-            cassino.formaPagamento7 = req.body.formaPagamento7,
-            cassino.valorBonus = req.body.valorBonus,
-            cassino.bonusGratis = req.body.bonusGratis,
-            cassino.linkCassino = req.body.linkCassino,
-            cassino.licencasCassino = req.body.licencasCassino,
-            cassino.suporte1 = req.body.suporte1,
-            cassino.suporte2 = req.body.suporte2,
-            cassino.suporte3 = req.body.suporte3,
-            cassino.app1 = req.body.app1,
-            cassino.app2 = req.body.app2,
-            cassino.depositoMinimo = req.body.depositoMinimo,
-            cassino.saqueMinimo = req.body.saqueMinimo,
-            cassino.incMelhores = req.body.incMelhores,
-            cassino.incNovos = req.body.incNovos,
-            cassino.incBrasil = req.body.incBrasil,
-            cassino.analiseCassino = req.body.analiseCassino,
-            cassino.topicoAnalise = req.body.topicoAnalise,
+            cassino.orderList = req.body.orderList
+            cassino.nomeCassino = req.body.nomeCassino
+            cassino.slugCassino = criarSlug(slug)
+            cassino.colorCard = req.body.colorCard
+            cassino.tagCard = req.body.tagCard
+            cassino.classCassino = req.body.classCassino
+            cassino.tipoCassino1 = req.body.tipoCassino1
+            cassino.tipoCassino2 = req.body.tipoCassino2
+            cassino.tipoCassino3 = req.body.tipoCassino3
+            cassino.adjCassino1 = req.body.adjCassino1
+            cassino.adjCassino2 = req.body.adjCassino2
+            cassino.adjCassino3 = req.body.adjCassino3
+            cassino.formaPagamento1 = req.body.formaPagamento1
+            cassino.formaPagamento2 = req.body.formaPagamento2
+            cassino.formaPagamento3 = req.body.formaPagamento3
+            cassino.formaPagamento4 = req.body.formaPagamento4
+            cassino.formaPagamento5 = req.body.formaPagamento5
+            cassino.formaPagamento6 = req.body.formaPagamento6
+            cassino.formaPagamento7 = req.body.formaPagamento7
+            cassino.formaPagamento8 = req.body.formaPagamento8
+            cassino.formaPagamento9 = req.body.formaPagamento9
+            cassino.formaPagamento10 = req.body.formaPagamento10
+            cassino.valorBonus = req.body.valorBonus
+            cassino.bonusGratis = req.body.bonusGratis
+            cassino.linkCassino = req.body.linkCassino
+            cassino.licencasCassino = req.body.licencasCassino
+            cassino.suporte1 = req.body.suporte1
+            cassino.suporte2 = req.body.suporte2
+            cassino.suporte3 = req.body.suporte3
+            cassino.app1 = req.body.app1
+            cassino.app2 = req.body.app2
+            cassino.depositoMinimo = req.body.depositoMinimo
+            cassino.saqueMinimo = req.body.saqueMinimo
+            cassino.incMelhores = req.body.incMelhores
+            cassino.incNovos = req.body.incNovos
+            cassino.incBrasil = req.body.incBrasil
+            cassino.analiseCassino = req.body.analiseCassino
+            cassino.topicoAnalise = req.body.topicoAnalise
     
             cassino.save().then(() => {
                 req.flash("success_msg", "Cassino editado com sucesso")
@@ -366,39 +427,66 @@ router.post("/editandoCassino", uploadCassino.single('imgCassino'), (req, res) =
         })
     
         stream.end(req.file.buffer)
+        const slug = req.body.nomeCassino
+        function criarSlug(str) {
+            // Converter para minúsculas e substituir espaços por traços
+            str = str.toLowerCase().replace(/\s+/g, '-');
+
+            // Substituir caracteres especiais
+            const from = "ãàáäâèéëêìíïîõòóöôùúüûñç·/_,:;'";
+            const to   = "aaaaaeeeeiiiiooooouuuunc------";
+            for (let i = 0, l = from.length; i < l; i++) {
+                str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
+
+            // Remover caracteres especiais restantes
+            str = str.replace(/[^a-z0-9 -]/g, '');
+
+            // Remover traços duplicados
+            str = str.replace(/-+/g, '-');
+
+            // Remover traços no início e no fim da string
+            str = str.replace(/^-+|-+$/g, '');
+
+            return str;
+        }
         Cassino.findOne({_id: req.body.id}).then((cassino) => {
-            cassino.nomeCassino = req.body.nomeCassino,
-            cassino.imgCassino = req.file.filename,
-            cassino.classCassino = req.body.classCassino,
-            cassino.tipoCassino1 = req.body.tipoCassino1,
-            cassino.tipoCassino2 = req.body.tipoCassino2,
-            cassino.tipoCassino3 = req.body.tipoCassino3,
-            cassino.adjCassino1 = req.body.adjCassino1,
-            cassino.adjCassino2 = req.body.adjCassino2,
-            cassino.adjCassino3 = req.body.adjCassino3,
-            cassino.formaPagamento1 = req.body.formaPagamento1,
-            cassino.formaPagamento2 = req.body.formaPagamento2,
-            cassino.formaPagamento3 = req.body.formaPagamento3,
-            cassino.formaPagamento4 = req.body.formaPagamento4,
-            cassino.formaPagamento5 = req.body.formaPagamento5,
-            cassino.formaPagamento6 = req.body.formaPagamento6,
-            cassino.formaPagamento7 = req.body.formaPagamento7,
-            cassino.valorBonus = req.body.valorBonus,
-            cassino.bonusGratis = req.body.bonusGratis,
-            cassino.linkCassino = req.body.linkCassino,
-            cassino.licencasCassino = req.body.licencasCassino,
-            cassino.suporte1 = req.body.suporte1,
-            cassino.suporte2 = req.body.suporte2,
-            cassino.suporte3 = req.body.suporte3,
-            cassino.app1 = req.body.app1,
-            cassino.app2 = req.body.app2,
-            cassino.depositoMinimo = req.body.depositoMinimo,
-            cassino.saqueMinimo = req.body.saqueMinimo,
-            cassino.incMelhores = req.body.incMelhores,
-            cassino.incNovos = req.body.incNovos,
-            cassino.incBrasil = req.body.incBrasil,
-            cassino.analiseCassino = req.body.analiseCassino,
-            cassino.topicoAnalise = req.body.topicoAnalise,
+            cassino.orderList = req.body.orderList
+            cassino.nomeCassino = req.body.nomeCassino
+            cassino.slugCassino = criarSlug(slug)
+            cassino.imgCassino = req.file.filename
+            cassino.colorCard = req.body.colorCard
+            cassino.tagCard = req.body.tagCard
+            cassino.classCassino = req.body.classCassino
+            cassino.tipoCassino1 = req.body.tipoCassino1
+            cassino.tipoCassino2 = req.body.tipoCassino2
+            cassino.tipoCassino3 = req.body.tipoCassino3
+            cassino.adjCassino1 = req.body.adjCassino1
+            cassino.adjCassino2 = req.body.adjCassino2
+            cassino.adjCassino3 = req.body.adjCassino3
+            cassino.formaPagamento1 = req.body.formaPagamento1
+            cassino.formaPagamento2 = req.body.formaPagamento2
+            cassino.formaPagamento3 = req.body.formaPagamento3
+            cassino.formaPagamento4 = req.body.formaPagamento4
+            cassino.formaPagamento5 = req.body.formaPagamento5
+            cassino.formaPagamento6 = req.body.formaPagamento6
+            cassino.formaPagamento7 = req.body.formaPagamento7
+            cassino.valorBonus = req.body.valorBonus
+            cassino.bonusGratis = req.body.bonusGratis
+            cassino.linkCassino = req.body.linkCassino
+            cassino.licencasCassino = req.body.licencasCassino
+            cassino.suporte1 = req.body.suporte1
+            cassino.suporte2 = req.body.suporte2
+            cassino.suporte3 = req.body.suporte3
+            cassino.app1 = req.body.app1
+            cassino.app2 = req.body.app2
+            cassino.depositoMinimo = req.body.depositoMinimo
+            cassino.saqueMinimo = req.body.saqueMinimo
+            cassino.incMelhores = req.body.incMelhores
+            cassino.incNovos = req.body.incNovos
+            cassino.incBrasil = req.body.incBrasil
+            cassino.analiseCassino = req.body.analiseCassino
+            cassino.topicoAnalise = req.body.topicoAnalise
     
             cassino.save().then(() => {
                 req.flash("success_msg", "Cassino editado com sucesso")
@@ -449,10 +537,32 @@ router.post("/cadastrandoCategoria", (req, res) => {
     if(errors.length > 0) {
         res.render("admin/index", {errors: errors})
     } else {
+        const slug = req.body.nomeCategoria
+        function criarSlug(str) {
+            // Converter para minúsculas e substituir espaços por traços
+            str = str.toLowerCase().replace(/\s+/g, '-');
 
+            // Substituir caracteres especiais
+            const from = "ãàáäâèéëêìíïîõòóöôùúüûñç·/_,:;'";
+            const to   = "aaaaaeeeeiiiiooooouuuunc------";
+            for (let i = 0, l = from.length; i < l; i++) {
+                str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
+
+            // Remover caracteres especiais restantes
+            str = str.replace(/[^a-z0-9 -]/g, '');
+
+            // Remover traços duplicados
+            str = str.replace(/-+/g, '-');
+
+            // Remover traços no início e no fim da string
+            str = str.replace(/^-+|-+$/g, '');
+
+            return str;
+        }
         const newCategoria = new Categoria ({
             nomeCategoria: req.body.nomeCategoria,
-            slugCategoria: req.body.nomeCategoria.toLowerCase().replace(/"|á|â|à|ã|ä"/g, "a").replace(/"|é|ê|è|ë"/g, "e").replace(/"|í|ì|î|ï"/g, "i").replace(/"|ó|ò|ô|õ|ø|ö"/g, "o").replace(/"|ú|ù|û|ü"/g, "u").replace(/ç/g, "c").replace(/ñ/g, "n").replace(/ý/g, "y").replace(/ /g, "-")
+            slugCategoria: criarSlug(slug)
         })
     
         newCategoria.save().then(() => {
@@ -487,8 +597,31 @@ router.get("/editarCategoria/:id", (req, res) => {
 
 router.post("/editandoCategoria", (req, res) => {
     Categoria.findOne({_id: req.body.id}).then((categoria) => {
+        const slug = req.body.nomeCategoria
+        function criarSlug(str) {
+            // Converter para minúsculas e substituir espaços por traços
+            str = str.toLowerCase().replace(/\s+/g, '-');
+
+            // Substituir caracteres especiais
+            const from = "ãàáäâèéëêìíïîõòóöôùúüûñç·/_,:;'";
+            const to   = "aaaaaeeeeiiiiooooouuuunc------";
+            for (let i = 0, l = from.length; i < l; i++) {
+                str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+            }
+
+            // Remover caracteres especiais restantes
+            str = str.replace(/[^a-z0-9 -]/g, '');
+
+            // Remover traços duplicados
+            str = str.replace(/-+/g, '-');
+
+            // Remover traços no início e no fim da string
+            str = str.replace(/^-+|-+$/g, '');
+
+            return str;
+        }
         categoria.nomeCategoria = req.body.nomeCategoria
-        categoria.slugCategoria = req.body.nomeCategoria.toLowerCase().replace(/"|á|â|à|ã|ä"/g, "a").replace(/"|é|ê|è|ë"/g, "e").replace(/"|í|ì|î|ï"/g, "i").replace(/"|ó|ò|ô|õ|ø|ö"/g, "o").replace(/"|ú|ù|û|ü"/g, "u").replace(/ç/g, "c").replace(/ñ/g, "n").replace(/ý/g, "y").replace(/ /g, "-")
+        categoria.slugCategoria = criarSlug(slug)
 
         categoria.save().then(() => {
             req.flash("success_msg", "Categoria alterada com sucesso")
@@ -591,10 +724,32 @@ router.post("/cadastrandoPostagem", uploadCapa.single('imgPostagem'), (req, res)
             })
         
             stream.end(req.file.buffer)
-    
+            const slug = req.body.tituloPostagem
+            function criarSlug(str) {
+                // Converter para minúsculas e substituir espaços por traços
+                str = str.toLowerCase().replace(/\s+/g, '-');
+
+                // Substituir caracteres especiais
+                const from = "ãàáäâèéëêìíïîõòóöôùúüûñç·/_,:;'";
+                const to   = "aaaaaeeeeiiiiooooouuuunc------";
+                for (let i = 0, l = from.length; i < l; i++) {
+                    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+                }
+
+                // Remover caracteres especiais restantes
+                str = str.replace(/[^a-z0-9 -]/g, '');
+
+                // Remover traços duplicados
+                str = str.replace(/-+/g, '-');
+
+                // Remover traços no início e no fim da string
+                str = str.replace(/^-+|-+$/g, '');
+
+                return str;
+            }
             const newPostagem = new Postagem({
                 tituloPostagem:  req.body.tituloPostagem,
-                slugPostagem: req.body.tituloPostagem.toLowerCase().replace(/"|á|â|à|ã|ä"/g, "a").replace(/"|é|ê|è|ë"/g, "e").replace(/"|í|ì|î|ï"/g, "i").replace(/"|ó|ò|ô|õ|ø|ö"/g, "o").replace(/"|ú|ù|û|ü"/g, "u").replace(/ç/g, "c").replace(/ñ/g, "n").replace(/ý/g, "y").replace(/ /g, "-"),
+                slugPostagem: criarSlug(slug),
                 descPostagem: req.body.descPostagem,
                 imgPostagem: req.file.filename,
                 conteudoPostagem: req.body.conteudoPostagem,
@@ -649,12 +804,35 @@ router.get("/editarPostagem/:id", (req, res) => {
 router.post("/editandoPostagem", uploadCapa.single('imgPostagem'), (req, res) => {
     if(req.file == undefined) {
         Postagem.findOne({_id: req.body.id}).then((postagem) => {
-            postagem.tituloPostagem = req.body.tituloPostagem,
-            postagem.slugPostagem = req.body.tituloPostagem.toLowerCase().replace(/"|á|â|à|ã|ä"/g, "a").replace(/"|é|ê|è|ë"/g, "e").replace(/"|í|ì|î|ï"/g, "i").replace(/"|ó|ò|ô|õ|ø|ö"/g, "o").replace(/"|ú|ù|û|ü"/g, "u").replace(/ç/g, "c").replace(/ñ/g, "n").replace(/ý/g, "y").replace(/ /g, "-"),
-            postagem.descPostagem = req.body.descPostagem,
-            postagem.conteudoPostagem = req.body.conteudoPostagem,
-            postagem.topicoPostagem = req.body.topicoPostagem,
-            postagem.categoriaPostagem = req.body.categoriaPostagem,
+            const slug = req.body.tituloPostagem
+            function criarSlug(str) {
+                // Converter para minúsculas e substituir espaços por traços
+                str = str.toLowerCase().replace(/\s+/g, '-');
+
+                // Substituir caracteres especiais
+                const from = "ãàáäâèéëêìíïîõòóöôùúüûñç·/_,:;'";
+                const to   = "aaaaaeeeeiiiiooooouuuunc------";
+                for (let i = 0, l = from.length; i < l; i++) {
+                    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+                }
+
+                // Remover caracteres especiais restantes
+                str = str.replace(/[^a-z0-9 -]/g, '');
+
+                // Remover traços duplicados
+                str = str.replace(/-+/g, '-');
+
+                // Remover traços no início e no fim da string
+                str = str.replace(/^-+|-+$/g, '');
+
+                return str;
+            }
+            postagem.tituloPostagem = req.body.tituloPostagem
+            postagem.slugPostagem = criarSlug(slug)
+            postagem.descPostagem = req.body.descPostagem
+            postagem.conteudoPostagem = req.body.conteudoPostagem
+            postagem.topicoPostagem = req.body.topicoPostagem
+            postagem.categoriaPostagem = req.body.categoriaPostagem
             postagem.cassinoPostagem = req.body.cassinoPostagem
     
             postagem.save().then(() => {
@@ -705,13 +883,36 @@ router.post("/editandoPostagem", uploadCapa.single('imgPostagem'), (req, res) =>
         stream.end(req.file.buffer)
 
         Postagem.findOne({_id: req.body.id}).then((postagem) => {
-            postagem.tituloPostagem = req.body.tituloPostagem,
-            postagem.slugPostagem = req.body.tituloPostagem.toLowerCase().replace(/"|á|â|à|ã|ä"/g, "a").replace(/"|é|ê|è|ë"/g, "e").replace(/"|í|ì|î|ï"/g, "i").replace(/"|ó|ò|ô|õ|ø|ö"/g, "o").replace(/"|ú|ù|û|ü"/g, "u").replace(/ç/g, "c").replace(/ñ/g, "n").replace(/ý/g, "y").replace(/ /g, "-"),
-            postagem.descPostagem = req.body.descPostagem,
-            postagem.imgPostagem = req.file.filename,
-            postagem.conteudoPostagem = req.body.conteudoPostagem,
-            postagem.topicoPostagem = req.body.topicoPostagem,
-            postagem.categoriaPostagem = req.body.categoriaPostagem,
+            const slug = req.body.tituloPostagem
+            function criarSlug(str) {
+                // Converter para minúsculas e substituir espaços por traços
+                str = str.toLowerCase().replace(/\s+/g, '-');
+
+                // Substituir caracteres especiais
+                const from = "ãàáäâèéëêìíïîõòóöôùúüûñç·/_,:;'";
+                const to   = "aaaaaeeeeiiiiooooouuuunc------";
+                for (let i = 0, l = from.length; i < l; i++) {
+                    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+                }
+
+                // Remover caracteres especiais restantes
+                str = str.replace(/[^a-z0-9 -]/g, '');
+
+                // Remover traços duplicados
+                str = str.replace(/-+/g, '-');
+
+                // Remover traços no início e no fim da string
+                str = str.replace(/^-+|-+$/g, '');
+
+                return str;
+            }
+            postagem.tituloPostagem = req.body.tituloPostagem
+            postagem.slugPostagem = criarSlug(slug)
+            postagem.descPostagem = req.body.descPostagem
+            postagem.imgPostagem = req.file.filename
+            postagem.conteudoPostagem = req.body.conteudoPostagem
+            postagem.topicoPostagem = req.body.topicoPostagem
+            postagem.categoriaPostagem = req.body.categoriaPostagem
             postagem.cassinoPostagem = req.body.cassinoPostagem
     
             postagem.save().then(() => {

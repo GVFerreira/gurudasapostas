@@ -14,9 +14,22 @@
     </section>
 
     <section id="secao2b">
-        <div class="container">
-            {{>_cardCassino}}
+      <div class="container">
+        <div class="mt-5">
+          <div class="row mb-2">
+            <div class="col mb-2">
+              <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
+              <p class="branco d-inline">Aposte Com Responsabilidade</p>
+            </div>
+            <div class="col excluirCol425"></div>
+          </div>
         </div>
+        {{#each todosCassinos}}
+          {{>_cardCassino}}
+        {{else}}
+          <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
+        {{/each}}
+      </div>
     </section>
 
     <section id="secao3b">
@@ -64,25 +77,38 @@
     </section>
 
     <section id="secao5b">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-xxl">
-                    <h2 class="branco">Casas de aposta <br>com bônus grátis</h2>
-                </div>
-                <div class="col excluirCol768">
-                    
-                </div>
+      <div class="container py-5">
+        <div class="row">
+            <div class="col-xxl">
+                <h2 class="branco">Casas de aposta <br>com bônus grátis</h2>
             </div>
-            <div class="row">
-                <div class="col-xxl">
-                    <p class="branco">Saiba quais são os sites de apostas que dão Bônus e Apostas Grátis aos seus usuários e quais os valores que você pode receber com eles!</p>
-                </div>
-                <div class="col excluirCol768">
-
-                </div>
+            <div class="col excluirCol768">
+                
             </div>
-            {{>_cardCassino}}
         </div>
+        <div class="row">
+            <div class="col-xxl">
+                <p class="branco">Saiba quais são os sites de apostas que dão Bônus e Apostas Grátis aos seus usuários e quais os valores que você pode receber com eles!</p>
+            </div>
+            <div class="col excluirCol768">
+
+            </div>
+        </div>
+        <div class="mt-5">
+          <div class="row mb-2">
+            <div class="col mb-2">
+              <img src="../img/18.svg" width="36px" height="36px" alt="+18" class="mais18 d-inline">
+              <p class="branco d-inline">Aposte Com Responsabilidade</p>
+            </div>
+            <div class="col excluirCol425"></div>
+          </div>
+        </div>
+        {{#each bonusCassinos}}
+          {{>_cardCassino}}
+        {{else}}
+          <h4 class="my-3 mx-3 noinfo">Não há nenhum registro de cassino</h4>
+        {{/each}}
+      </div>
     </section>
 
     <section id="secao6b">
