@@ -205,7 +205,7 @@ router.post("/cadastrandoCassino", uploadCassino.single('imgCassino'), (req, res
         }
         makeBucketPublic().catch(console.error)
     
-        const file = bucket.file(req.file.filename)
+        const file = bucket.file(`images/${req.file.filename}`)
         const stream = file.createWriteStream({
             metadata: {
                 contentType: req.file.mimetype
@@ -410,7 +410,7 @@ router.post("/editandoCassino", uploadCassino.single('imgCassino'), (req, res) =
         }
         makeBucketPublic().catch(console.error)
     
-        const file = bucket.file(req.file.filename)
+        const file = bucket.file(`images/${req.file.filename}`)
         const stream = file.createWriteStream({
             metadata: {
                 contentType: req.file.mimetype
@@ -707,7 +707,7 @@ router.post("/cadastrandoPostagem", uploadCapa.single('imgPostagem'), (req, res)
             }
             makeBucketPublic().catch(console.error)
         
-            const file = bucket.file(req.file.filename)
+            const file = bucket.file(`images/${req.file.filename}`)
             const stream = file.createWriteStream({
                 metadata: {
                     contentType: req.file.mimetype
@@ -864,7 +864,7 @@ router.post("/editandoPostagem", uploadCapa.single('imgPostagem'), (req, res) =>
         }
         makeBucketPublic().catch(console.error)
     
-        const file = bucket.file(req.file.filename)
+        const file = bucket.file(`images/${req.file.filename}`)
         const stream = file.createWriteStream({
             metadata: {
                 contentType: req.file.mimetype

@@ -35,6 +35,7 @@
     const uploadLogo = require("./helpers/uploadCassino")
     const uploadCapa = require("./helpers/uploadPostagem")
     const compression = require('compression')
+    const cookieParser = require('cookie-parser');
 
     //autenticação
     const passport = require("passport")
@@ -52,11 +53,9 @@
             resave: true,
             saveUninitialized: true
         }))
-        
         app.use(compression())
         app.use(passport.initialize())
         app.use(passport.session())
-
         app.use(flash())
 
     //Middleware
@@ -67,9 +66,7 @@
             res.locals.user = req.user || null
             next()
         })
-          
-        app.use(cookieconsent.init(cookieOptions));
-          
+        app.use(cookieParser())
 
     //Body Parser
         app.use(bodyParser.urlencoded({extended: true}))
@@ -89,10 +86,12 @@
     //Public
         app.use(express.static(path.join(__dirname, "public")))
 
-
 //Rotas
     //Pública
         app.get("/", async (req, res) => {
+            const policyAccepted = req.cookies.policyAccepted
+            const showPolicyPopup = !policyAccepted
+
             const title = "Home"
             const metaDescription = `Todas as informações sobre as melhores casas de apostas esportivas no país. Conheça todas as notícias sobre a Lei do Jogo Online no Brasil. Aprenda a se tornar um apostador de alto nível com os nossos guias de apostas gratuitos. Veja as listas dos Bônus que você não pode perder!`
 
@@ -100,7 +99,13 @@
             const melhoresCassinos = await Cassino.find({incMelhores: 1}).sort({orderList: "ASC"})
             const brasilCassinos = await Cassino.find({incBrasil: 1}).sort({orderList: "ASC"})
             const novosCassinos = await Cassino.find({incNovos: 1}).sort({orderList: "ASC"})
-            res.render("index", {todosCassinos, melhoresCassinos, brasilCassinos, novosCassinos, title, metaDescription})
+            res.render("index", {showPolicyPopup, todosCassinos, melhoresCassinos, brasilCassinos, novosCassinos, title, metaDescription})
+        })
+
+        app.post('/accept-policy', (req, res) => {
+            //Setar cookie de aceite de política por 1 ano
+            res.cookie('policyAccepted', true, { maxAge: 31536000000 })
+            res.redirect('/')
         })
 
         app.get("/cassinos", async (req, res) => {
@@ -112,7 +117,7 @@
 
         app.get("/bonus", async (req, res) => {
             const title = "Bônus de cadastro" 
-            const todosCassinos = await Cassino.find().sort({orderList: "ASC"})
+            const todosCassinos = await Cassino.find().sort({valorBonus: "DESC"})
             const bonusCassinos = await Cassino.find({bonusGratis: 1}).sort({orderList: "ASC"})
             res.render("bonus", {todosCassinos, bonusCassinos, title})
         })
@@ -143,7 +148,6 @@
             res.render("jogo-responsavel", {title: "Jogo responsável"})
         })
 
-        
         //Rotas alternativas
         app.use("/admin", /*isAdmin,*/ admin)
         app.use("/users", users)
